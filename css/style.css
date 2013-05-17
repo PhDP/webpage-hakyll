@@ -1,5 +1,3 @@
-/* Fonts */
-
 body {
   font-family: 'Droid sans', sans-serif;
 }
@@ -8,39 +6,35 @@ div#header, h1, h2, h3 {
   font-family: 'Domine', serif;
 }
 
-/* Colors */
-
 body {
-  color: #333333; /* #502000; */
+  color: #333333;
 }
 
-a, a:link, a:visited, h1, h2, h3 {
-  color: #757BD1;
+a, a:link, a:visited, h1, h2, h3{
+  color: #757bd1;
   text-decoration: none;
 }
 
-a:hover {
+a:hover{
   color: #00f;
   text-decoration: none;
 }
 
-::selection {
-  color: #000;
-  background-color: #757BD1;
+::selection{
+  color: #fff;
+  background-color: #757bd1;
 }
 
-::-moz-selection {
-  color: #000;
-  background-color: #757BD1;
+::-moz-selection{
+  color: #fff;
+  background-color:#757bd1
 }
-
-/* Style */
 
 body {
   width: 800px;
   margin: 0px auto;
   margin-top: 0px;
-  padding: 0px;
+  padding: 0px
 }
 
 #header {
@@ -56,127 +50,121 @@ nav{
   width: 100%;
 }
 
-nav ul {
+nav ul{
   padding: 6px 0 7px 0;
   margin: 0;
   text-align: center;
 }
 
-nav ul li {
+nav ul li{
   text-align: center;
-  /*
-  border: 0;
-  border-radius: 8px;
-  background-color: #686ec4;
-  */
   display: inline;
 }
 
-nav ul li a {
-  padding: 6px 3px 4px 3px; /* Top padding is 6px, bottom padding is 4px. */
-  margin-left: 10px;
-  margin-right: 10px;
-  text-decoration: none;
+nav ul li a{
+  padding:6px 3px 4px 3px;
+  margin-left:10px;
+  margin-right:10px;
+  text-decoration:none
 }
 
-blockquote {
-  margin-top: 10px;
-  margin-bottom: 10px;
-  margin-left: 50px;
-  padding-left: 15px;
-  border-left: 3px solid #ccc;
-} 
-
-img {
-  border: 0px;
+blockquote{
+  margin-top:10px;
+  margin-bottom:10px;
+  margin-left:50px;
+  padding-left:15px;
+  border-left:3px solid #ccc
 }
 
-#site-title {
-  float: left;
-  margin: 5px;
-  font-size: 200%;
+img{
+  border:0px
 }
 
-div#content {
-  font-size: 18px;
-  padding: 0px 12px;
-  margin-bottom: 36px;
+#site-title{
+  float:left;
+  margin:5px;
+  font-size:200%
 }
 
-.clear {
-  clear: both;
+div#content{
+  font-size:22px;
+  padding:0px 12px;
+  margin-bottom:36px
 }
 
-.imageleft {
-  float: left;
-  margin: 15px;
+.clear{
+  clear:both
 }
 
-.imageright {
-  float: right;
-  margin: 15px;
+.imageleft{
+  float:left;
+  margin:15px
 }
 
-.image .caption {
-  font-size: 50%;
-  text-align: center;
+.imageright{
+  float:right;
+  margin:15px
 }
 
-.imagecenter {
-  text-align: center;
+.image .caption{
+  font-size:50%;
+  text-align:center
 }
 
-div.figure {
-  float: right;
-  margin-left: 15px;
+.imagecenter{
+  text-align:center
 }
 
-div.figure p {
-  text-align: center;
-  /* font-style: italic; */
-  font-size: smaller;
-  text-indent: 0;
+div.figure{
+  float:right;
+  margin-left:15px
 }
 
-div.terminal {
-  text-align: left;
-  text-indent: 0px;
-  border: 1px solid #dcdccd;
-  background-color: #000;
-  color: #dcdccd;
-  font-family: monospace;
-  padding: 1em;
+div.figure p{
+  text-align:center;
+  font-size:smaller;
+  text-indent:0
 }
 
-div#header h1 {
-  font-size: 26px;
-  text-indent: 0px;
-  text-align: center;  
+div.terminal{
+  text-align:left;
+  text-indent:0px;
+  border:1px solid #dcdccd;
+  background-color:#000;
+  color:#dcdccd;
+  font-family:monospace;
+  padding:1em
 }
 
-h1, h2, h3, li #posts {
-  font-weight: bold;
-  text-align: left;
+div#header h1{
+  font-size:26px;
+  text-indent:0px;
+  text-align:center
 }
 
-h1 {
-  text-indent: -18px;
-  font-size: 20pt;
+h1, h2, h3, li #posts{
+  font-weight:bold;
+  text-align:left
 }
 
-h2, li #posts {
-  font-size: 18pt;
+h1{
+  text-indent:-18px;
+  font-size:20pt
 }
 
-h2 {
-  text-indent: -8px;
+h2, li #posts{
+  font-size:18pt
 }
 
-h3 {
-  text-indent: -4px;
-  font-style: italic;
+h2{
+  text-indent:-8px
 }
 
-#posts {
-  list-style-type: none;
+h3{
+  text-indent:-4px;
+  font-style:italic
+}
+
+#posts{
+  list-style-type:none
 }
