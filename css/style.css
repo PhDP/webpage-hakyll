@@ -27,14 +27,14 @@ a:hover{
 
 ::-moz-selection{
   color: #fff;
-  background-color:#757bd1
+  background-color:#757bd1;
 }
 
 body {
   width: 800px;
   margin: 0px auto;
   margin-top: 0px;
-  padding: 0px
+  padding: 0px;
 }
 
 #header {
@@ -87,37 +87,37 @@ img{
 }
 
 div#content{
-  font-size:22px;
+  font-size: 22px;
   padding:0px 12px;
-  margin-bottom:36px
+  margin-bottom: 36px;
 }
 
-.clear{
+.clear {
   clear:both
 }
 
-.imageleft{
-  float:left;
-  margin:15px
+.imageleft {
+  float: left;
+  margin: 15px;
 }
 
 .imageright{
-  float:right;
-  margin:15px
+  float: right;
+  margin: 15px;
 }
 
 .image .caption{
-  font-size:50%;
-  text-align:center
+  font-size: 50%;
+  text-align: center;
 }
 
 .imagecenter{
-  text-align:center
+  text-align: center;
 }
 
 div.figure{
   float:right;
-  margin-left:15px
+  margin-left: 15px;
 }
 
 div.figure p{
@@ -142,29 +142,32 @@ div#header h1{
   text-align:center
 }
 
-h1, h2, h3, li #posts{
-  font-weight:bold;
-  text-align:left
+h1, h2, h3, li #posts {
+  font-weight: bold;
 }
 
-h1{
-  text-indent:-18px;
-  font-size:20pt
+h2, h3, li #posts {
+  text-align: left;
+}
+
+h1 {
+  text-align: center;
+  font-size: 180%;
 }
 
 h2, li #posts{
-  font-size:18pt
+  font-size: 120%;
 }
 
 h2{
-  text-indent:-8px
+  text-indent: -8px;
 }
 
 h3{
-  text-indent:-4px;
-  font-style:italic
+  text-indent: -4px;
+  font-style: italic;
 }
 
 #posts{
-  list-style-type:none
+  list-style-type: none;
 }
