@@ -18,7 +18,7 @@ main = hakyll $ do
         route idRoute
         compile $ do
             getResourceBody
-                >>= loadAndApplyTemplate "templates/default.html" postCtx
+                >>= loadAndApplyTemplate "templates/post.html" postCtx
                 >>= relativizeUrls
 
     match "*.html" $ do
