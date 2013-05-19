@@ -1,6 +1,6 @@
 _cache/
 _site/
-images/*.db
+*.db
 site.exe
 site.hi
 site.o
