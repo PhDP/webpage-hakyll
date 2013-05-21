@@ -10,12 +10,12 @@ body {
   color: #333333;
 }
 
-a, a:link, a:visited, h1, h2, h3{
+a, a:link, a:visited, h1, h2, h3 {
   color: #757bd1;
   text-decoration: none;
 }
 
-a:hover{
+a:hover {
   color: #00f;
   text-decoration: none;
 }
@@ -31,10 +31,10 @@ a:hover{
 }
 
 body {
-  width: 800px;
-  margin: 0px auto;
-  margin-top: 0px;
-  padding: 0px;
+  width: 900px;
+  margin: 0 auto;
+  margin-top: 0;
+  padding: 0;
 }
 
 #header {
@@ -45,7 +45,7 @@ body {
 
 nav{
   margin: 5px;
-  font-size: 16pt;
+  font-size: 22px;
   font-weight: bold;
   width: 100%;
 }
@@ -61,14 +61,14 @@ nav ul li{
   display: inline;
 }
 
-nav ul li a{
+nav ul li a {
   padding: 6px 3px 4px 3px;
   margin-left: 10px;
   margin-right: 10px;
   text-decoration: none;
 }
 
-blockquote{
+blockquote {
   margin-top: 10px;
   margin-bottom: 10px;
   margin-left: 50px;
@@ -76,24 +76,24 @@ blockquote{
   border-left: 3px solid #ccc
 }
 
-img{
-  border:0px
+img {
+  border: 0px;
 }
 
-#site-title{
-  float:left;
-  margin:5px;
-  font-size:200%
+#site-title {
+  float: left;
+  margin: 5px;
+  font-size: 200%;
 }
 
-div#content{
+div#content {
   font-size: 22px;
-  padding: 0px 12px;
+  padding: 0 12px;
   margin-bottom: 36px;
 }
 
 .clear {
-  clear:both
+  clear: both;
 }
 
 .imageleft {
@@ -115,8 +115,8 @@ div#content{
   text-align: center;
 }
 
-div.figure{
-  float:right;
+div.figure {
+  float: right;
   margin-left: 1em;
 }
 
@@ -136,17 +136,17 @@ div.terminal {
   padding: 1em;
 }
 
-div#header h1{
+div#header h1 {
   font-size: 26 px;
-  text-indent: 0 px;
+  text-indent: 0;
   text-align: center;
 }
 
-h1, h2, h3, li #posts {
+h1, h2, h3 {
   font-weight: bold;
 }
 
-h2, h3, li #posts {
+h2, h3 {
   text-align: left;
 }
 
@@ -173,10 +173,4 @@ p#dt {
   font-size: 80%;
   font-style: italic;
   text-align: right;
-}
-
-div#posts{
-  margin=0;
-  padding=0;
-  /* list-style-type: none; */
 }
