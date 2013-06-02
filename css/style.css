@@ -12,23 +12,24 @@ body {
 }
 
 a, a:link, a:visited, h1, h2, h3 {
-  color: #757bd1;
+/*  color: #757bd1; */
+  color: #a600a6;
   text-decoration: none;
 }
 
 a:hover {
-  color: #00f;
+  color: #91c5ff;
   text-decoration: none;
 }
 
 ::selection{
   color: #fff;
-  background-color: #757bd1;
+  background-color: #a600a6;
 }
 
 ::-moz-selection{
   color: #fff;
-  background-color:#757bd1;
+  background-color: #a600a6;
 }
 
 body {

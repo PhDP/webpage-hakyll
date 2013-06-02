@@ -2,6 +2,7 @@ _cache/
 _site/
 drafts/
 *.db
+site
 site.exe
 site.hi
 site.o
