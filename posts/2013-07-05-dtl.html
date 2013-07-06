@@ -1,0 +1,81 @@
+---
+title: Machine Learning and Deep Transfer Learning
+tags: Artificial Intelligence, Machine Learning, 2013
+---
+
+<p>This short text explains the basic idea behind deep
+transfer learning, an ambitious attempt to build machine learning algorithms
+capable of exploiting prior knowledge. If you're looking for a technical
+treatment, I highly suggest Mihalkova's <a href=
+"http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.119.241&rep=rep1&typ
+e=pdf">Mapping and Revising Markov Logic Networks for Transfer Learning</a>,
+one of the best algorithm for deep transfer. Also, I do not dwell on
+the distinctions between deep and shallow transfer, and the various subtypes
+of machine learning algorithms (supervised vs nonsupervised, online vs
+batch): I want to provide a strategic overview of what deep transfer learning
+is about and why it's important.</p>
+
+<h2>The standard approach to machine learning</h2>
+
+<p>Machine learning is straightforward: data is fed to an algorithm that
+builds a model and, hopefully, generate good predictions:</p>
+
+<div class="imagecenter">
+  <img src="../images/ml-900.png" alt="Machine learning">
+</div>
+
+<p>The data can be pretty much anything from ecological data to movie
+preferences. Machine learning algorithms can build effective models because
+they are tailored for the input data. It is hard, if not impossible, to
+build by hand the right mathematical model to solve complex problems such as
+handwriting recognition, spam detection, language processing and many,
+many, other problems where no simple equation can be found. In these cases,
+we have to step back and, instead of focusing on building the model ourself,
+we design algorithms to do it in our place. That's the essence of machine
+learning.</p>
+
+<p>Building models this way is good, but it has a few problems. What can we
+do when we have little data? If the situation has changed since we collected
+our data, is our model still good? When we face a similar situation, can we
+reuse our previous model or do we need to build a new one?</p>
+
+<h2>Deep transfer learning algorithms</h2>
+
+<p>Machine learning algorithms use a <i>Tabula rasa</i> approach: the
+algorithms start with nothing and build the model only with the supplied
+data. It's simple, but it's also inefficient. Deep transfer learning is
+about transferring knowledge between different tasks. Instead of starting
+from scratch, deep transfer algorithms can exploit accumulated knowledge to
+learn faster (we also have good reasons to think deep transfer is a key
+component to build reliable models, but that's a more complicated topic). It
+looks like this:</p>
+
+<div class="imagecenter">
+  <img src="../images/ml-transfer-900.png" alt="Deep transfer learning">
+</div>
+
+<p>The algorithm, instead of simply reading the input data, will exploit
+data from a large data-set of prior knowledge. This, in itself, is tricky.
+The algorithm must make a judgment call: what is relevant to the present
+subject, what can be used, and what should be discarded? Certainly, our
+model for US presidential elections will be awful if we try, say, <a href=
+"http://en.wikipedia.org/wiki/Redskins_Rule">to bring data from football
+games</a>. So there are risks to deep transfer learning, but the benefits
+are huge.</p>
+
+<p>To make an analogy with human learning, imagine you need to learn to run.
+Of course, running is very similar to walking so you won't start from zero.
+You're able to see that running and walking are similar tasks and thus you
+can transfer your knowledge of running into walking. It allows you to learn
+much faster, and also yield interesting information on how the two tasks are
+related to each other. If you need to learn Mandarin though, running and
+walking won't serve you. It's a more general approach: a very conservative
+deep transfer learning algorithm could choose to always reject prior
+information and would build the model just as before.</p>
+
+<p>Machine learning starts from 0. Big data is nice, but it would be
+much nicer if we could build models with more than a tiny fraction of it.
+Deep transfer is about determining what is relevant in previous data-sets
+and use this information to design better models, and faster! My thesis
+focuses on doing just that, using the complex heterogeneous data-sets
+found in ecology.</p>
