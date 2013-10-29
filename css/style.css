@@ -1,7 +1,5 @@
 body {
   font-family: 'Domine', serif;
-  /* font-family: 'Droid sans', sans-serif; */
-  /* font-family: 'Source Sans Pro', sans-serif; */
 }
 
 div#header, h1, h2, h3 {
@@ -13,8 +11,7 @@ body {
 }
 
 a, a:link, a:visited, h1, h2, h3 {
-/*  color: #757bd1; */
-  color: #a600a6;
+  color: #003399;
   text-decoration: none;
 }
 
@@ -23,14 +20,14 @@ a:hover {
   text-decoration: none;
 }
 
-::selection{
+::selection {
   color: #fff;
-  background-color: #a600a6;
+  background-color: #003399;
 }
 
-::-moz-selection{
+::-moz-selection {
   color: #fff;
-  background-color: #a600a6;
+  background-color: #003399;
 }
 
 body {
@@ -72,12 +69,12 @@ nav ul li a {
 }
 
 blockquote{
-  color: #a600a6;
+  color: #003399;
   margin-top: 1em;
   margin-bottom: 1em;
   margin-left: 0;
   padding-left: 0.5em;
-  border-left: 0.3em solid #a600a6;
+  border-left: 0.3em solid #003399;
 }
 
 img {
@@ -131,12 +128,12 @@ div.figure p {
 }
 
 div.terminal {
+  font-family: 'Ubuntu Mono', sans-serif;
   text-align: left;
   text-indent: 0px;
   border: 1px solid #dcdccd;
   background-color: #000;
   color: #dcdccd;
-  font-family: monospace;
   padding: 1em;
 }
 
@@ -182,3 +179,4 @@ table.center {
   margin-left: auto;
   margin-right: auto;
 }
+
