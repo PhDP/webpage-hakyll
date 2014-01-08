@@ -28,6 +28,7 @@ main = do
 			compile $ do
 				getResourceBody
 					>>= loadAndApplyTemplate "templates/post.html" postCtx
+					>>= loadAndApplyTemplate "templates/default.html" postCtx
 					>>= relativizeUrls
 	
 		match "*.html" $ do
