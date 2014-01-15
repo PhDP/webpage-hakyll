@@ -9,13 +9,14 @@ main =
         setLocaleEncoding utf8
         setFileSystemEncoding utf8
         setForeignEncoding utf8
-        hakyll $ do 
-            -- Get files
+        hakyll $ do
+
+            -- Get files (copy 'as is')
             match "files/*" $ do
-            route idRoute
-            compile copyFileCompiler
+                route idRoute
+                compile copyFileCompiler
         
-            -- Get images
+            -- Get images (copy 'as is')
             match "images/*" $ do
                 route idRoute
                 compile copyFileCompiler
@@ -31,7 +32,7 @@ main =
                 compile $ do
                     getResourceBody
                         >>= loadAndApplyTemplate "templates/post.html" postCtx
-                        >>= saveSnapshot "content"
+                        >>= saveSnapshot "content" -- Snapshot for the atom.xml file
                         >>= loadAndApplyTemplate "templates/default.html" postCtx
                         >>= relativizeUrls
         
@@ -74,8 +75,8 @@ postList sortFilter =
 
 -- Config for the Atom.xml file.
 myFeedConfiguration :: FeedConfiguration
-myFeedConfiguration = FeedConfiguration
-    {
+myFeedConfiguration =
+    FeedConfiguration {
         feedTitle       = "Philippe Desjardins-Proulx -- Posts",
         feedDescription = "Artificial Intelligence, Machine Learning, Programming, Technology, et cetera...",
         feedAuthorName  = "Philippe Desjardins-Proulx",
