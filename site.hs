@@ -11,45 +11,45 @@ main = do
     setFileSystemEncoding utf8
     setForeignEncoding utf8
     hakyll $ do 
-		match "files/*" $ do
-			route idRoute
-			compile copyFileCompiler
+        match "files/*" $ do
+        route idRoute
+        compile copyFileCompiler
 
-		match "images/*" $ do
-			route idRoute
-			compile copyFileCompiler
-	
-		match "css/*" $ do
-			route idRoute
-			compile compressCssCompiler
-	
-		match "posts/*.html" $ do
-			route idRoute
-			compile $ do
-				getResourceBody
-					>>= loadAndApplyTemplate "templates/post.html" postCtx
-                                        >>= saveSnapshot "content"
-					>>= loadAndApplyTemplate "templates/default.html" postCtx
-					>>= relativizeUrls
-	
-		match "*.html" $ do
-			route idRoute
-			compile $ do
-				let indexCtx = field "posts" $ \_ -> postList $ fmap (take 30) . recentFirst
-				getResourceBody
-					>>= applyAsTemplate indexCtx
-					>>= loadAndApplyTemplate "templates/default.html" postCtx
-					>>= relativizeUrls
-	
-		match "templates/*" $ compile templateCompiler
+        match "images/*" $ do
+            route idRoute
+            compile copyFileCompiler
+    
+        match "css/*" $ do
+            route idRoute
+            compile compressCssCompiler
+    
+        match "posts/*.html" $ do
+            route idRoute
+            compile $ do
+                getResourceBody
+                    >>= loadAndApplyTemplate "templates/post.html" postCtx
+                    >>= saveSnapshot "content"
+                    >>= loadAndApplyTemplate "templates/default.html" postCtx
+                    >>= relativizeUrls
+    
+        match "*.html" $ do
+            route idRoute
+            compile $ do
+                let indexCtx = field "posts" $ \_ -> postList $ fmap (take 30) . recentFirst
+                getResourceBody
+                    >>= applyAsTemplate indexCtx
+                    >>= loadAndApplyTemplate "templates/default.html" postCtx
+                    >>= relativizeUrls
+    
+        match "templates/*" $ compile templateCompiler
 
-                create ["atom.xml"] $ do
-                    route idRoute
-                    compile $ do
-                        let feedCtx = postCtx `mappend` bodyField "description"
-                        posts <- fmap (take 10) . recentFirst =<<
-                            loadAllSnapshots "posts/*" "content"
-                        renderAtom myFeedConfiguration feedCtx posts
+        create ["atom.xml"] $ do
+            route idRoute
+            compile $ do
+                let feedCtx = postCtx `mappend` bodyField "description"
+                posts <- fmap (take 10) . recentFirst =<<
+                    loadAllSnapshots "posts/*" "content"
+                renderAtom myFeedConfiguration feedCtx posts
 
 --------------------------------------------------------------------------------
 postCtx :: Context String
