@@ -28,6 +28,7 @@ main = do
 			compile $ do
 				getResourceBody
 					>>= loadAndApplyTemplate "templates/post.html" postCtx
+                                        >>= saveSnapshot "content"
 					>>= loadAndApplyTemplate "templates/default.html" postCtx
 					>>= relativizeUrls
 	
@@ -42,6 +43,14 @@ main = do
 	
 		match "templates/*" $ compile templateCompiler
 
+                create ["atom.xml"] $ do
+                    route idRoute
+                    compile $ do
+                        let feedCtx = postCtx `mappend` bodyField "description"
+                        posts <- fmap (take 10) . recentFirst =<<
+                            loadAllSnapshots "posts/*" "content"
+                        renderAtom myFeedConfiguration feedCtx posts
+
 --------------------------------------------------------------------------------
 postCtx :: Context String
 postCtx =
@@ -55,4 +64,13 @@ postList sortFilter = do
     itemTpl <- loadBody "templates/post-item.html"
     list    <- applyTemplateList itemTpl postCtx posts
     return list
+
+myFeedConfiguration :: FeedConfiguration
+myFeedConfiguration = FeedConfiguration
+    { feedTitle       = "Philippe Desjardins-Proulx"
+    , feedDescription = "Artificial Intelligence, Machine Learning, Programming, et al..."
+    , feedAuthorName  = "Philippe Desjardins-Proulx"
+    , feedAuthorEmail = "phdp@outlook.com"
+    , feedRoot        = "http://phdp.github.io/"
+    }
 
