@@ -35,6 +35,15 @@ main =
                         >>= saveSnapshot "content" -- Snapshot for the atom.xml file
                         >>= loadAndApplyTemplate "templates/default.html" postCtx
                         >>= relativizeUrls
+
+            -- Get Japanese posts
+            match "burogu/*.html" $ do
+                route idRoute
+                compile $ do
+                    getResourceBody
+                        >>= loadAndApplyTemplate "templates/post.html" postCtx
+                        >>= loadAndApplyTemplate "templates/default.html" postCtx
+                        >>= relativizeUrls
         
             -- Parse html files
             match "*.html" $ do
