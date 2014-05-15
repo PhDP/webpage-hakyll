@@ -1,9 +1,16 @@
 body {
-  font-family: 'Domine', serif
+  font-family: 'Domine', 'AR PL UKai CN', serif
+}
+
+div#hidden {
+  font-family: 'Ubuntu Mono', 'AR PL UKai CN';
+  font-size: 120%;
+  text-align: center;
+  color: #fff
 }
 
 div#header, h1, h2, h3 {
-  font-family: 'Domine', serif
+  font-family: 'Domine', 'AR PL UKai CN', serif
 }
 
 body {
@@ -167,11 +174,23 @@ h2 {
 p#dt {
   margin-top: -1em;
   font-size: 80%;
-  text-align: right;
+  text-align: right
+}
+
+p#atom, p#atom a, p#atom a:hover {
+  color: #ffA500;
+  font-weight: bold;
+  text-align: right
 }
 
 table.center {
   margin-left: auto;
   margin-right: auto;
+  text-align: center
+}
+
+tr.title {
+  color: #003399;
+  font-weight: bold
 }
 
