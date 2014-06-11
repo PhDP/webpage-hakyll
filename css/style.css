@@ -18,7 +18,7 @@ body {
 }
 
 a, a:link, a:visited, h1, h2, h3 {
-  color: #003399;
+  color: #0047b6;
   text-decoration: none
 }
 
@@ -29,12 +29,12 @@ a:hover {
 
 ::selection {
   color: #fff;
-  background-color: #003399
+  background-color: #0047b6
 }
 
 ::-moz-selection {
   color: #fff;
-  background-color: #003399
+  background-color: #0047b6
 }
 
 body {
@@ -76,12 +76,12 @@ nav ul li a {
 }
 
 blockquote {
-  color: #003399;
+  color: #0047b6;
   margin-top: 1em;
   margin-bottom: 1em;
   margin-left: 0;
   padding-left: 0.5em;
-  border-left: 0.3em solid #003399
+  border-left: 0.3em solid #0047b6
 }
 
 img {
@@ -190,7 +190,7 @@ table.center {
 }
 
 tr.title {
-  color: #003399;
+  color: #0047b6;
   font-weight: bold
 }
 
