@@ -1,5 +1,5 @@
 body {
-  font-family: 'Domine', 'AR PL UKai CN', serif
+  font-family: 'Source Sans Pro', 'AR PL UKai CN', serif
 }
 
 div#hidden {
@@ -51,6 +51,7 @@ body {
 }
 
 nav {
+  font-family: 'Domine', 'AR PL UKai CN', serif;
   margin: 5px;
   font-size: 22px;
   font-weight: bold;
