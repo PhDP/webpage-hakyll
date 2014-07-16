@@ -10,7 +10,7 @@ div#hidden {
 }
 
 div#header, h1, h2, h3 {
-  font-family: 'Domine', 'AR PL UKai CN', serif
+  font-family: 'Montserrat', 'AR PL UKai CN', serif
 }
 
 body {
@@ -51,7 +51,7 @@ body {
 }
 
 nav {
-  font-family: 'Domine', 'AR PL UKai CN', serif;
+  font-family: 'Montserrat', 'AR PL UKai CN', serif;
   margin: 5px;
   font-size: 22px;
   font-weight: bold;
