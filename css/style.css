@@ -18,23 +18,23 @@ body {
 }
 
 a, a:link, a:visited, h1, h2, h3 {
-  color: #0047b6;
+  color: #006699;
   text-decoration: none
 }
 
 a:hover {
-  color: #359Aff;
+  color: #768295;
   text-decoration: none
 }
 
 ::selection {
   color: #fff;
-  background-color: #0047b6
+  background-color: #006699
 }
 
 ::-moz-selection {
   color: #fff;
-  background-color: #0047b6
+  background-color: #006699
 }
 
 body {
@@ -77,12 +77,12 @@ nav ul li a {
 }
 
 blockquote {
-  color: #0047b6;
+  color: #006699;
   margin-top: 1em;
   margin-bottom: 1em;
   margin-left: 0;
   padding-left: 0.5em;
-  border-left: 0.3em solid #0047b6
+  border-left: 0.3em solid #006699
 }
 
 img {
@@ -179,7 +179,7 @@ p#dt {
 }
 
 p#atom, p#atom a, p#atom a:hover {
-  color: #ffA500;
+  color: #FFA500;
   font-weight: bold;
   text-align: right
 }
@@ -191,7 +191,7 @@ table.center {
 }
 
 tr.title {
-  color: #0047b6;
+  color: #006699;
   font-weight: bold
 }
 
