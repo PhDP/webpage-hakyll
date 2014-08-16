@@ -32,7 +32,7 @@
   $body$
 
   <div id='hidden'>
-    let world = "世界" in printf "Hello %s!" world
+    (let [world "世界"] (str "Hello " world "!"))
   </div>
 </div>
 
