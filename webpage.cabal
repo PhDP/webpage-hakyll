@@ -1,0 +1,16 @@
+name:                webpage
+version:             1.0.0
+synopsis:            Personal webpage
+homepage:            http://phdp.github.io/
+license:             MIT
+author:              Philippe Desjardins-Proulx
+maintainer:          philippe.d.proulx@gmail.com
+category:            Web
+build-type:          Simple
+cabal-version:       >= 1.18
+
+executable webpage
+  main-is:             Main.hs
+  build-depends:       base == 4.7.0.1
+                     , hakyll
+
