@@ -1,5 +1,5 @@
 body {
-  font-family: 'Source Sans Pro', 'AR PL UKai CN', serif
+  font-family: 'Source Sans Pro', 'AR PL UKai CN', sans-serif
 }
 
 div#hidden {
@@ -10,7 +10,7 @@ div#hidden {
 }
 
 div#header, h1, h2, h3 {
-  font-family: 'Montserrat', 'AR PL UKai CN', serif
+  font-family: 'Questrial', 'AR PL UKai CN', sans-serif
 }
 
 body {
@@ -18,7 +18,7 @@ body {
 }
 
 a, a:link, a:visited, h1, h2, h3 {
-  color: #006699;
+  color: #003399;
   text-decoration: none
 }
 
@@ -29,12 +29,12 @@ a:hover {
 
 ::selection {
   color: #fff;
-  background-color: #006699
+  background-color: #003399
 }
 
 ::-moz-selection {
   color: #fff;
-  background-color: #006699
+  background-color: #003399
 }
 
 body {
@@ -51,10 +51,9 @@ body {
 }
 
 nav {
-  font-family: 'Montserrat', 'AR PL UKai CN', serif;
+  font-family: 'Questrial', 'AR PL UKai CN', sans-serif;
   margin: 5px;
   font-size: 22px;
-  font-weight: bold;
   width: 100%
 }
 
@@ -77,12 +76,12 @@ nav ul li a {
 }
 
 blockquote {
-  color: #006699;
+  color: #003399;
   margin-top: 1em;
   margin-bottom: 1em;
   margin-left: 0;
   padding-left: 0.5em;
-  border-left: 0.3em solid #006699
+  border-left: 0.3em solid #003399
 }
 
 img {
@@ -151,10 +150,6 @@ div#header h1 {
   text-align: center
 }
 
-h1, h2 {
-  font-weight: bold
-}
-
 h2 {
   text-align: left
 }
@@ -180,7 +175,6 @@ p#dt {
 
 p#atom, p#atom a, p#atom a:hover {
   color: #FFA500;
-  font-weight: bold;
   text-align: right
 }
 
@@ -191,7 +185,6 @@ table.center {
 }
 
 tr.title {
-  color: #006699;
-  font-weight: bold
+  color: #003399;
 }
 

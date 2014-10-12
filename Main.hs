@@ -36,17 +36,26 @@ main =
                         >>= loadAndApplyTemplate "templates/default.html" postCtx
                         >>= relativizeUrls
 
-            -- Get Japanese posts
-            match "burogu/*.html" $ do
+            -- Get French posts
+            match "posts-fr/*.html" $ do
                 route idRoute
                 compile $ do
                     getResourceBody
                         >>= loadAndApplyTemplate "templates/post.html" postCtx
                         >>= loadAndApplyTemplate "templates/default.html" postCtx
                         >>= relativizeUrls
-        
+
+            -- Get Japanese posts
+            match "posts-jp/*.html" $ do
+                route idRoute
+                compile $ do
+                    getResourceBody
+                        >>= loadAndApplyTemplate "templates/post.html" postCtx
+                        >>= loadAndApplyTemplate "templates/default.html" postCtx
+                        >>= relativizeUrls
+            
             -- Parse html files
-            match "*.html" $ do
+            match "index.html" $ do
                 route idRoute
                 compile $ do
                     let indexCtx = field "posts" $ \_ -> postList $ fmap (take 30) . recentFirst
@@ -54,6 +63,49 @@ main =
                         >>= applyAsTemplate indexCtx
                         >>= loadAndApplyTemplate "templates/default.html" postCtx
                         >>= relativizeUrls
+            
+            -- Parse html files
+            match "contact.html" $ do
+                route idRoute
+                compile $ do
+                    let indexCtx = field "posts" $ \_ -> postList $ fmap (take 30) . recentFirst
+                    getResourceBody
+                        >>= applyAsTemplate indexCtx
+                        >>= loadAndApplyTemplate "templates/default.html" postCtx
+                        >>= relativizeUrls
+            
+            -- Parse html files
+            match "writings.html" $ do
+                route idRoute
+                compile $ do
+                    let indexCtx = field "posts" $ \_ -> postList $ fmap (take 30) . recentFirst
+                    getResourceBody
+                        >>= applyAsTemplate indexCtx
+                        >>= loadAndApplyTemplate "templates/default.html" postCtx
+                        >>= relativizeUrls
+            
+            -- Parse html files
+            match "writings-fr.html" $ do
+                route idRoute
+                compile $ do
+                    let indexCtx = field "posts" $ \_ -> frPostList $ fmap (take 30) . recentFirst
+                    getResourceBody
+                        >>= applyAsTemplate indexCtx
+                        >>= loadAndApplyTemplate "templates/default.html" postCtx
+                        >>= relativizeUrls
+            
+            -- Parse html files
+            match "writings-jp.html" $ do
+                route idRoute
+                compile $ do
+                    let indexCtx = field "posts" $ \_ -> jpPostList $ fmap (take 30) . recentFirst
+                    getResourceBody
+                        >>= applyAsTemplate indexCtx
+                        >>= loadAndApplyTemplate "templates/default.html" postCtx
+                        >>= relativizeUrls
+        
+            -- Compile templates
+            match "templates/*" $ compile templateCompiler
         
             -- Compile templates
             match "templates/*" $ compile templateCompiler
@@ -78,6 +130,24 @@ postList :: ([Item String] -> Compiler [Item String]) -> Compiler String
 postList sortFilter =
     do
         posts   <- sortFilter =<< loadAll "posts/*"
+        itemTpl <- loadBody "templates/post-item.html"
+        list    <- applyTemplateList itemTpl postCtx posts
+        return list
+
+-- Build the list of posts
+frPostList :: ([Item String] -> Compiler [Item String]) -> Compiler String
+frPostList sortFilter =
+    do
+        posts   <- sortFilter =<< loadAll "posts-fr/*"
+        itemTpl <- loadBody "templates/post-item.html"
+        list    <- applyTemplateList itemTpl postCtx posts
+        return list
+
+-- Build the list of posts
+jpPostList :: ([Item String] -> Compiler [Item String]) -> Compiler String
+jpPostList sortFilter =
+    do
+        posts   <- sortFilter =<< loadAll "posts-jp/*"
         itemTpl <- loadBody "templates/post-item.html"
         list    <- applyTemplateList itemTpl postCtx posts
         return list
