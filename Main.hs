@@ -58,7 +58,7 @@ main =
             match "index.html" $ do
                 route idRoute
                 compile $ do
-                    let indexCtx = field "posts" $ \_ -> postList $ fmap (take 30) . recentFirst
+                    let indexCtx = field "posts" $ \_ -> (postList "posts/*") $ fmap (take 30) . recentFirst
                     getResourceBody
                         >>= applyAsTemplate indexCtx
                         >>= loadAndApplyTemplate "templates/default.html" postCtx
@@ -68,7 +68,7 @@ main =
             match "contact.html" $ do
                 route idRoute
                 compile $ do
-                    let indexCtx = field "posts" $ \_ -> postList $ fmap (take 30) . recentFirst
+                    let indexCtx = field "posts" $ \_ -> (postList "posts/*") $ fmap (take 30) . recentFirst
                     getResourceBody
                         >>= applyAsTemplate indexCtx
                         >>= loadAndApplyTemplate "templates/default.html" postCtx
@@ -78,7 +78,7 @@ main =
             match "writings.html" $ do
                 route idRoute
                 compile $ do
-                    let indexCtx = field "posts" $ \_ -> postList $ fmap (take 30) . recentFirst
+                    let indexCtx = field "posts" $ \_ -> (postList "posts/*") $ fmap (take 30) . recentFirst
                     getResourceBody
                         >>= applyAsTemplate indexCtx
                         >>= loadAndApplyTemplate "templates/default.html" postCtx
@@ -88,7 +88,7 @@ main =
             match "writings-fr.html" $ do
                 route idRoute
                 compile $ do
-                    let indexCtx = field "posts" $ \_ -> frPostList $ fmap (take 30) . recentFirst
+                    let indexCtx = field "posts" $ \_ -> (postList "posts-fr/*") $ fmap (take 30) . recentFirst
                     getResourceBody
                         >>= applyAsTemplate indexCtx
                         >>= loadAndApplyTemplate "templates/default.html" postCtx
@@ -98,7 +98,7 @@ main =
             match "writings-jp.html" $ do
                 route idRoute
                 compile $ do
-                    let indexCtx = field "posts" $ \_ -> jpPostList $ fmap (take 30) . recentFirst
+                    let indexCtx = field "posts" $ \_ -> (postList "posts-jp/*") $ fmap (take 30) . recentFirst
                     getResourceBody
                         >>= applyAsTemplate indexCtx
                         >>= loadAndApplyTemplate "templates/default.html" postCtx
@@ -126,28 +126,10 @@ postCtx =
     defaultContext
 
 -- Build the list of posts
-postList :: ([Item String] -> Compiler [Item String]) -> Compiler String
-postList sortFilter =
+postList :: Pattern -> ([Item String] -> Compiler [Item String]) -> Compiler String
+postList dir sortFilter =
     do
-        posts   <- sortFilter =<< loadAll "posts/*"
-        itemTpl <- loadBody "templates/post-item.html"
-        list    <- applyTemplateList itemTpl postCtx posts
-        return list
-
--- Build the list of posts
-frPostList :: ([Item String] -> Compiler [Item String]) -> Compiler String
-frPostList sortFilter =
-    do
-        posts   <- sortFilter =<< loadAll "posts-fr/*"
-        itemTpl <- loadBody "templates/post-item.html"
-        list    <- applyTemplateList itemTpl postCtx posts
-        return list
-
--- Build the list of posts
-jpPostList :: ([Item String] -> Compiler [Item String]) -> Compiler String
-jpPostList sortFilter =
-    do
-        posts   <- sortFilter =<< loadAll "posts-jp/*"
+        posts   <- sortFilter =<< loadAll dir
         itemTpl <- loadBody "templates/post-item.html"
         list    <- applyTemplateList itemTpl postCtx posts
         return list
