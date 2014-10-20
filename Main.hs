@@ -15,101 +15,30 @@ main =
             match "files/*" $ do
                 route idRoute
                 compile copyFileCompiler
-        
+
             -- Get images (copy 'as is')
             match "images/*" $ do
                 route idRoute
                 compile copyFileCompiler
-        
+
             -- Compile & compress CSS
             match "css/*" $ do
                 route idRoute
                 compile compressCssCompiler
-        
-            -- Get posts
-            match "posts/*.html" $ do
-                route idRoute
-                compile $ do
-                    getResourceBody
-                        >>= loadAndApplyTemplate "templates/post.html" postCtx
-                        >>= saveSnapshot "content" -- Snapshot for the atom.xml file
-                        >>= loadAndApplyTemplate "templates/default.html" postCtx
-                        >>= relativizeUrls
 
-            -- Get French posts
-            match "posts-fr/*.html" $ do
-                route idRoute
-                compile $ do
-                    getResourceBody
-                        >>= loadAndApplyTemplate "templates/post.html" postCtx
-                        >>= loadAndApplyTemplate "templates/default.html" postCtx
-                        >>= relativizeUrls
+            -- Parse html files
+            match "posts/*.html" $ parsePosts
+            match "posts-fr/*.html" $ parsePosts
+            match "posts-jp/*.html" $ parsePosts
+            match "index.html" $ parseHtml
+            match "contact.html" $ parseHtml
+            match "writings.html" $ parseHtml
+            match "writings-fr.html" $ parsePostList "posts-fr/*"
+            match "writings-jp.html" $ parsePostList "posts-jp/*"
 
-            -- Get Japanese posts
-            match "posts-jp/*.html" $ do
-                route idRoute
-                compile $ do
-                    getResourceBody
-                        >>= loadAndApplyTemplate "templates/post.html" postCtx
-                        >>= loadAndApplyTemplate "templates/default.html" postCtx
-                        >>= relativizeUrls
-            
-            -- Parse html files
-            match "index.html" $ do
-                route idRoute
-                compile $ do
-                    let indexCtx = field "posts" $ \_ -> (postList "posts/*") $ fmap (take 30) . recentFirst
-                    getResourceBody
-                        >>= applyAsTemplate indexCtx
-                        >>= loadAndApplyTemplate "templates/default.html" postCtx
-                        >>= relativizeUrls
-            
-            -- Parse html files
-            match "contact.html" $ do
-                route idRoute
-                compile $ do
-                    let indexCtx = field "posts" $ \_ -> (postList "posts/*") $ fmap (take 30) . recentFirst
-                    getResourceBody
-                        >>= applyAsTemplate indexCtx
-                        >>= loadAndApplyTemplate "templates/default.html" postCtx
-                        >>= relativizeUrls
-            
-            -- Parse html files
-            match "writings.html" $ do
-                route idRoute
-                compile $ do
-                    let indexCtx = field "posts" $ \_ -> (postList "posts/*") $ fmap (take 30) . recentFirst
-                    getResourceBody
-                        >>= applyAsTemplate indexCtx
-                        >>= loadAndApplyTemplate "templates/default.html" postCtx
-                        >>= relativizeUrls
-            
-            -- Parse html files
-            match "writings-fr.html" $ do
-                route idRoute
-                compile $ do
-                    let indexCtx = field "posts" $ \_ -> (postList "posts-fr/*") $ fmap (take 30) . recentFirst
-                    getResourceBody
-                        >>= applyAsTemplate indexCtx
-                        >>= loadAndApplyTemplate "templates/default.html" postCtx
-                        >>= relativizeUrls
-            
-            -- Parse html files
-            match "writings-jp.html" $ do
-                route idRoute
-                compile $ do
-                    let indexCtx = field "posts" $ \_ -> (postList "posts-jp/*") $ fmap (take 30) . recentFirst
-                    getResourceBody
-                        >>= applyAsTemplate indexCtx
-                        >>= loadAndApplyTemplate "templates/default.html" postCtx
-                        >>= relativizeUrls
-        
-            -- Compile templates
+            -- Parse templates
             match "templates/*" $ compile templateCompiler
-        
-            -- Compile templates
-            match "templates/*" $ compile templateCompiler
-        
+
             -- Built the atom.xml file
             create ["atom.xml"] $ do
                 route idRoute
@@ -125,14 +54,39 @@ postCtx =
     dateField "date" "%Y.%m.%d" `mappend`
     defaultContext
 
--- Build the list of posts
 postList :: Pattern -> ([Item String] -> Compiler [Item String]) -> Compiler String
-postList dir sortFilter =
-    do
-        posts   <- sortFilter =<< loadAll dir
-        itemTpl <- loadBody "templates/post-item.html"
-        list    <- applyTemplateList itemTpl postCtx posts
-        return list
+postList dir sortFilter = do
+    posts   <- sortFilter =<< loadAll dir
+    itemTpl <- loadBody "templates/post-item.html"
+    list    <- applyTemplateList itemTpl postCtx posts
+    return list
+
+parsePostList p = do
+    route idRoute
+    compile $ do
+        let indexCtx = field "posts" $ \_ -> (postList p) $ fmap (take 30) . recentFirst
+        getResourceBody
+            >>= applyAsTemplate indexCtx
+            >>= loadAndApplyTemplate "templates/default.html" postCtx
+            >>= relativizeUrls
+
+parsePosts = do
+    route idRoute
+    compile $ do
+        getResourceBody
+            >>= loadAndApplyTemplate "templates/post.html" postCtx
+            >>= saveSnapshot "content" -- Snapshot for the atom.xml file
+            >>= loadAndApplyTemplate "templates/default.html" postCtx
+            >>= relativizeUrls
+
+parseHtml = do
+    route idRoute
+    compile $ do
+        let indexCtx = field "posts" $ \_ -> (postList "posts/*") $ fmap (take 30) . recentFirst
+        getResourceBody
+           >>= applyAsTemplate indexCtx
+           >>= loadAndApplyTemplate "templates/default.html" postCtx
+           >>= relativizeUrls
 
 -- Config for the Atom.xml file.
 myFeedConfiguration :: FeedConfiguration
@@ -144,4 +98,3 @@ myFeedConfiguration =
         feedAuthorEmail = "philippe.d.proulx@gmail.com",
         feedRoot        = "http://phdp.github.io/"
     }
-
