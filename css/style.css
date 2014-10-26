@@ -1,16 +1,16 @@
 body {
-  font-family: 'Source Sans Pro', 'AR PL UKai CN', sans-serif
+  font-family: 'Source Sans Pro', 'Source Han Sans', 'AR PL UKai CN', sans-serif
 }
 
 div#hidden {
-  font-family: 'Ubuntu Mono', 'AR PL UKai CN';
+  font-family: 'Ubuntu Mono', 'Source Han Sans', 'AR PL UKai CN';
   font-size: 120%;
   text-align: center;
   color: #fff
 }
 
 div#header, h1, h2, h3 {
-  font-family: 'Questrial', 'AR PL UKai CN', sans-serif
+  font-family: 'Questrial', 'Source Han Sans', 'AR PL UKai CN', sans-serif
 }
 
 body {
@@ -51,7 +51,7 @@ body {
 }
 
 nav {
-  font-family: 'Questrial', 'AR PL UKai CN', sans-serif;
+  font-family: 'Questrial', 'Source Han Sans', 'AR PL UKai CN', sans-serif;
   margin: 5px;
   font-size: 22px;
   width: 100%
