@@ -173,6 +173,12 @@ p#dt {
   text-align: right
 }
 
+p.authors {
+  margin-top: -1em;
+  font-size: 80%;
+  text-align: right
+}
+
 p#atom, p#atom a, p#atom a:hover {
   color: #FFA500;
   text-align: right
