@@ -20,6 +20,11 @@ main =
             match "images/*" $ do
                 route idRoute
                 compile copyFileCompiler
+            
+            -- Get javascript files (copy 'as is')
+            match "js/*" $ do
+                route idRoute
+                compile copyFileCompiler
 
             -- Compile & compress CSS
             match "css/*" $ do
