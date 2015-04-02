@@ -1,9 +1,9 @@
 .PHONY = all clean
 
-all: site
+all: Main
 
-site:
-	ghc --make site.hs
+Main:
+	ghc --make Main.hs
 
 clean:
 	rm site.hi site.o

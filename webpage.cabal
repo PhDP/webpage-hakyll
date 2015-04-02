@@ -1,6 +1,7 @@
 name:                webpage
 version:             1.0.0
 synopsis:            Personal webpage
+description:         My personal page... What more to say?
 homepage:            http://phdp.github.io/
 license:             MIT
 author:              Philippe Desjardins-Proulx
@@ -11,6 +12,5 @@ cabal-version:       >= 1.16
 
 executable webpage
   main-is:             Main.hs
-  build-depends:       base
-                     , hakyll
+  build-depends:       base, hakyll
 
