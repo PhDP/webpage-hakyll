@@ -9,8 +9,9 @@ div#hidden {
   color: #fff
 }
 
-div#header, h1, h2, h3 {
-  font-family: 'Questrial', 'Source Han Sans', 'AR PL UKai CN', sans-serif
+
+div#header, h1, h2, h3 , nav {
+  font-family: 'Montserrat', 'Source Han Sans', 'AR PL UKai CN', sans-serif
 }
 
 body {
@@ -51,7 +52,6 @@ body {
 }
 
 nav {
-  font-family: 'Questrial', 'Source Han Sans', 'AR PL UKai CN', sans-serif;
   margin: 5px;
   font-size: 22px;
   width: 100%
