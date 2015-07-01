@@ -7,4 +7,6 @@ cabal.sandbox.config
 dist
 Main
 Main.*
+*.sketch
+files/tech_ent.pdf
 
