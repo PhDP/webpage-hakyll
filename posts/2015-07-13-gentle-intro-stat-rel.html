@@ -1,0 +1,79 @@
+---
+title: The case for statistical relational learning
+tags: machine learning, artificial intelligence, manticore
+---
+
+<h2>Logic is dead, long live logic!</h2>
+
+<p>Geoffrey Hinton, a pioneer in neural networks, made this interesting comment
+in his <a href='https://www.coursera.org/course/neuralnets'>lectures on neural
+networks</a>:</p>
+
+<blockquote><p>In the 1970s and early 1980s, people in Artificial Intelligence were
+  unbelievably anti-probability. When I was a graduate student if you mentioned
+  probability, it was a sign that you were stupid and you just hadn't got it.
+  Computers were all about discrete symbol processing, and if you introduced any
+  probabilities they would just infect everything. It's hard to conceived how much
+  people were against probability.</p> </blockquote>
+
+<p>...and then he shows this quote from P.H. Winston's Artificial Intelligence
+(1977), arguably the first book on A.I.:</p>
+
+<blockquote><p> Many ancient Greeks supported Socrates opinion that deep,
+  inexplicable thoughts came from the gods. Today's equivalent to those gods is
+  the erratic, even probabilistic neuron. It is more likely that increased
+  randomness of neural behavior is the problem of the epileptic and the drunk,
+  not the advantage of the brilliant.</p> </blockquote>
+
+<p>Today, very few data scientists / machine learning practitioners know much
+about the relational approach P.H. Winston was advocating. The paradigm shift
+in favor of probability is completed, it's the new normal. And there's a good
+reason why probabilistic, or statistical, approaches came to dominate
+relational (logic-based) approaches: they are more flexible. In logic, every
+statement is true, false, or unknown. This is simply too rigid to handle the
+nuances of the world, I'd even argue that nothing is really true or false (even
+in mathematics, proofs are true only within an axiomatic system, and the axioms
+have to be taken at face value without proofs).</p>
+
+<p>At the same time, we lost a lot of good things from logic, most notably the
+ability to model complex relationships between objects with clear, concise
+statements. Adapting a table from <a href='http://aima.cs.berkeley.edu/'>Russel
+and Norvig's AI book</a>, we get:</p>
+
+<table style="width:100%">
+  <tr>
+    <th>Language</th>
+    <th>Ontological commitment</th>
+    <th>Epistemological commitment</th>
+  </tr>
+  <tr>
+    <td>First-Order Logic</td>
+    <td>Facts, objects, relations</td>
+    <td>True | False | Unknown</td>
+  </tr>
+  <tr>
+    <td>Probability Theory</td>
+    <td>Facts</td>
+    <td>Degree of belief \(\in [0, 1]\)</td>
+  </tr>
+  <tr>
+    <td>Markov Logic</td>
+    <td>Facts, objects, relations</td>
+    <td>Degree of belief \(\in [0, 1]\)</td>
+  </tr>
+</table>
+
+<p>But this is all quite abstract, after all, even if statistical relational
+learning is a richer language, it is not necessily better. There is no
+inference without assumptions, and the more complex languages of SRL might not
+be worth it. I guess only the future will tell, but there are at least four good
+reasons to care about SRL:</p>
+
+<ol type="I">
+  <li>Human-friendliness</li>
+  <li>Computer-friendliness. I was brought to SRL by <a href='http://www.cs.utexas.edu/users/ml/papers/mihalkova-aaai07.pdf'>Lilyana Mihalkova's transfer learning algorithm</a>. At some in her algorithms, first-order logic formulas are revised using. First-order logic formulas are easy to handle, unlike a statistical models presented as a huge matrix of numbers. Even probabilistic graphical models, which are arguably more knowledge base, are not </li>
+  <li></li>
+  <li>A common claim is that logic is necessary to handle complex relationships... and
+  we do have some evidence that it performs really well in these cases.</li>
+</ol>
+
