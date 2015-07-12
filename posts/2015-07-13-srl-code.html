@@ -121,6 +121,10 @@ Felix, Laura\}\), or any number of objects we're interested in. Also, we
 don't need to have full data on all predicates, I'll show examples where we
 have no information at all.</p>
 
+<p>The next section is a demonstration, where I show a bit how Markov logic
+networks behave. It's followed by a section that explains the mathematics and
+show a full (albeit simple) example. These sections can be read in any order.</p>
+
 <h2>Code Example</h2>
 
 <p>At this point, you know enough to use Markov logic networks. In this section
@@ -366,4 +370,11 @@ logic symbol implies \(\Rightarrow\), go there for clarifications.</p>
 probability is:</p>
 
 \[\frac{544.57}{229210.5024} = 0.0023759\]
+
+<p>If we were to flip Cancer(Kara) to false, we'd get a lower probability (because smoking causes cancer):</p>
+
+\[\frac{1}{Z}\exp\left(3 \times 1.1 + 1 \times 1.5\right)] = \frac{121.51}{229210.5024} = 0.00053012.\]
+
+<p>There are much more interesting algorithms to compute probabilities, like adaptations of
+Gibbs sampling and belief propagation to Markov logic, but that would be it for now.</p>
 
