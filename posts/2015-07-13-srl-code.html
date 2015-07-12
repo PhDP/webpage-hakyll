@@ -42,39 +42,44 @@ logic, each associated with a weight. We'll use this for our examples:</p>
 \[\forall x: Smoking(x) \Rightarrow Cancer(x), 1.5;\]
 \[\forall x, y: Friend(x, y) \land Smoking(x) \Rightarrow Smoking(y), 1.1;\]
 
-<p<a href='https://en.wikipedia.org/wiki/List_of_logic_symbols'>Wikipedia has a
-  nice page on the various symbols</a>, but we'll only a few: \(\forall\) is
-"for all", \(\land\) is "and", and \(\Rightarrow\) is "implies". Then we have
-the weight: the higher it is, the stronger the statement. Something a bit
-confusing with logic is that implication is true if the left-side is false, so
-if Smokine(Elaine) is false, then the formula returns 1.</p>
+<p>If you don't know much about first-order logic, <a
+href='2015-07-13-fol.html'>I wrote a short introduction here, it'll be more
+than enough to understand Markov logic</a>.</p>
 
-<p>The grand idea here is that, in pure logic, a world is false if it violates
-a single formula, but in statistical relational learning, a world is less
-likely if it violates formulas, especially if it violates formula with a high
-weight. is the log odds between a world where F is true and a world where F is
-false. It has important advances on probabilistic approaches too: a first-order
-logic formula is simple to understand and interpret, it can be manipulated by
-humans in computers in ways a naked probabilistic model can't.</p>
+<p>The grand idea of statistical relational learning is that, in pure logic, a
+world is false if it violates a single formula, but in statistical relational
+learning, a world is less likely if it violates formulas, especially if it
+violates formula with a high weight. Formally, the weight is the log odds
+between a world where the formula is true and a world where it is false.
+Statistical relational learning has important advantages on probabilistic
+approaches too: a first-order logic formula is simple to understand and
+interpret, it can be manipulated by humans and computers in ways a naked
+probabilistic model can't.</p>
+
+<p>But enough with the background, I'll write a longer post later on the history
+of statistical relational learning, and why it's awesome, here I'll focus on 
+examples, code, and equations.</p>
 
 <h2>Inference in Markov logic</h2>
 
-<p>Where's our network? It's called a Markov logic network, but all we got
-is a set of weighted first-order logic formulas. While I do suggest you spread
-riots and chaos in anger, there's actually a simple explanation. A Markov
-logic network is a template for Markov networks. Take the formula:</p>
+<p>Where's our network? It's called a Markov logic <i>network</i>, but all we
+got is a set of weighted first-order logic formulas. A Markov logic network is
+a template for Markov networks. Take the formula:</p>
 
 \[\forall x: Smoking(x) \Rightarrow Cancer(x), 1.5;\]
 
 <p><i>x</i> is a variable, and to get a concrete model for inference from this
-template, we need to constraints the MLN with a set of constants. So in essence:</p>
+template, we need to apply constant (real objects) to the MLN. So in
+essence:</p>
 
 \[\mbox{MLN + Constants} \rightarrow \mbox{Markov Network}\]
 
-<p>Let's say we are interested smoking/cancer for Anna, Bob, Charlotte, Dominique,
-we can apply these constants to the formula to get a set of ground formulas.
-The term ground means the variables are replaced by constants, that is, concrete
-objects. For example in mathematics you probably encountered first-order logic formulas like:</p>
+<p>Let's say we are interested in the relationship between
+smoking/cancer/friendship for Jerry, Elaine, George, we can apply these
+constants to the formula to get a set of ground formulas.  The term <i>ground</i>
+means the variables are replaced by constants, that is, concrete objects. For
+example in mathematics you probably encountered first-order logic formulas
+like:</p>
 
 \[\forall x: Add(x, 0) = 0\]
 
@@ -339,7 +344,7 @@ From there, if we want to compute \(P(X = x)\), we use the equation</p>
 
 <p>where \(w_i\) is the weight of the ith factor, \(g_i\) is 1 if the formula
 is false given the values of the predicates or 0 if it's false, and \(Z\) is a
-normalizing factor (that is: it's the sum of the values of all possible
+normalizing constant (that is: it's the sum of the values of all possible
 assignments).</p>
 
 <p>Let's try to compute the probability of Kara and Lee being mutual friend,
@@ -353,7 +358,7 @@ Lee neither smokes nor has cancer. We'll get the following network:</p>
 <p>The value of the predicates can then be used to determine the factors that
 are true (worth 1, in green) and those that are false (worth 0, in red). If you
 are confused about the values, it's probably because you misinterpret the logic
-symbol implies \(\Rightarrow\), <a href='2015-07-12-fol.html'>check here for
+symbol implies \(\Rightarrow\), <a href='2015-07-13-fol.html'>check here for
 clarifications</a>.</p>
 
 <div class="imagecenter">
@@ -364,14 +369,14 @@ clarifications</a>.</p>
 \[\frac{1}{Z}\exp\left(3 \times 1.1 + 2 \times 1.5\right),\]
 \[\frac{544.57}{Z}.\]
 
-<p>Computing the normalizing factor gives \(Z = 229210.5024\), so our
+<p>Computing the normalizing constant gives \(Z = 229210.5024\), so our
 probability is:</p>
 
 \[\frac{544.57}{229210.5024} = 0.0023759.\]
 
 <p>If we were to flip Cancer(Kara) to false, we'd get a lower probability (because smoking causes cancer):</p>
 
-\[\frac{1}{Z}\exp\left(3 \times 1.1 + 1 \times 1.5\right)] = \frac{121.51}{229210.5024} = 0.00053012.\]
+\[\frac{1}{Z}\exp\left(3 \times 1.1 + 1 \times 1.5\right) = \frac{121.51}{229210.5024} = 0.00053012.\]
 
 <p>There are much more interesting algorithms to compute probabilities, like adaptations of
 Gibbs sampling and belief propagation to Markov logic, but that would be it for now.</p>
