@@ -3,7 +3,24 @@ title: A gentle introduction to statistical relational learning: maths, code, an
 tags: machine learning, artificial intelligence, manticore
 ---
 
-<p>I won't explain all the details</p>
+<p>Statistical relational learning is a branch of machine learning (A.I.)
+mixing ideas from probability theory and logic. I'll write another post later
+to explain the motivation and a bit of history of this fascinating branch of
+study but here I want to focus on a concrete example, with detailed
+maths and real code.</p>
+
+<p>The approach to statistical relational learning explained here is called
+Markov logic network (MLN), <a
+href='https://homes.cs.washington.edu/~pedrod/kbmn.pdf'>discovered in 2006 by
+Richardson and Domingo.</a> Their paper has a nice simple example of MLN
+applied to the relationship between smoking and cancer. However, it's a bit
+hard to follow unless you understand logic and probabilistic graphical models
+well, so I'll go into much more details here. I'll also show an interactive
+session with <a href='https://github.com/PhDP/Manticore'>Manticore</a>, a small
+implementation I wrote for interacting with models.</p>
+
+<p>A Markov logic network is simply a set of formulas written in first-order
+logic, each associated with a weight. We'll use this for our examples:</p>
 
 <table style='width: 80%'>
   <tr>
@@ -20,83 +37,123 @@ tags: machine learning, artificial intelligence, manticore
   </tr>
 </table>
 
-<p>Or using the symbolic representation for logic:</p>
+<p>Using a more formal representation for logic, we'll get:</p>
 
 \[\forall x: Smoking(x) \Rightarrow Cancer(x), 1.5;\]
 \[\forall x, y: Friend(x, y) \land Smoking(x) \Rightarrow Smoking(y), 1.1;\]
 
-<p>where \(\forall\) is "for all", \(\land\) is "and", and \(\Rightarrow\) is "implies".</p>
+<p<a href='https://en.wikipedia.org/wiki/List_of_logic_symbols'>Wikipedia has a
+  nice page on the various symbols</a>, but we'll only a few: \(\forall\) is "for all", \(\land\) is "and", and \(\Rightarrow\) is "implies". Then we have
+the weight: the higher it is, the stronger the statement.</p>
 
-<p>Interpretation of the formulas are really cool... the interpretatin of the
-weight is a bit trickier. It's the </p>
-
-<p>Admidittely</p>
+<p>The grand idea here is that, in pure logic, a world is false if it violates
+a single formula, but in statistical relational learning, a world is less
+likely if it violates formulas, especially if it violates formula with a high
+weight. is the log odds between a world where F is true and a world where F is
+false. It has important advances on probabilistic approaches too: a first-order
+logic formula is simple to understand and interpret, it can be manipulated by
+humans in computers in ways a naked probabilistic model can't.</p>
 
 <h2>Inference in Markov logic</h2>
 
 <p>Where's our network? It's called a Markov logic network, but all we got
 is a set of weighted first-order logic formulas. While I do suggest you spread
-riots and chaos in anger, there's actually a pretty explanation. A Markov
-logic network is a template for Markov networks. Take the formulas</p>
+riots and chaos in anger, there's actually a simple explanation. A Markov
+logic network is a template for Markov networks. Take the formula:</p>
 
 \[\forall x: Smoking(x) \Rightarrow Cancer(x), 1.5;\]
 
-<p>Let's say we are interested smoking/cancer for Anna, Bob, Charlotte, Dominique,
-we can apply these constants to the formula to get a set of ground formulas:</p>
+<p><i>x</i> is a variable, and to get a concrete model for inference from this
+template, we need to constraints the MLN with a set of constants. So in essence:</p>
 
-\[Smoking(Anna) \Rightarrow Cancer(Anna), 1.5;\]
-\[Smoking(Bob) \Rightarrow Cancer(Bob), 1.5;\]
-\[Smoking(Charlotte) \Rightarrow Cancer(Charlotte), 1.5;\]
+\[\mbox{MLN + Constants} \rightarrow \mbox{Markov Network}\]
+
+<p>Let's say we are interested smoking/cancer for Anna, Bob, Charlotte, Dominique,
+we can apply these constants to the formula to get a set of ground formulas.
+The term ground means the variables are replaced by constants, that is, concrete
+objects. For example in mathematics you probably encountered first-order logic formulas like:</p>
+
+\[\forall x: Add(x, 0) = 0\]
+
+<p>For this formula, we can have grounding by replacing x with integers</p>
+
+\[Add(47, 0) = 0\]
+\[Add(1729, 0) = 0\]
+
+<p>Similarly, applying the set of constants \(\{Elaine, Jerry, George\}\) to our first formula yields a set of ground formulas:</p>
+
+\[Smoking(Elaine) \Rightarrow Cancer(Elaine), 1.5;\]
+\[Smoking(Jerry) \Rightarrow Cancer(Jerry), 1.5;\]
+\[Smoking(George) \Rightarrow Cancer(George), 1.5;\]
 
 <p>We could do the same thing with the other formula, but now it has two
 variables:</p>
 
-\[Friend(Anna, Anna) \land Smoking(Anna) \Rightarrow Smoking(Anna), 1.1;\]
-\[Friend(Anna, Bob) \land Smoking(Anna) \Rightarrow Smoking(Bob), 1.1;\]
-\[Friend(Anna, Charlotte) \land Smoking(Anna) \Rightarrow Smoking(Charlotte), 1.1;\]
-\[Friend(Bob, Anna) \land Smoking(Bob) \Rightarrow Smoking(Anna), 1.1;\]
-\[Friend(Bob, Bob) \land Smoking(Bob) \Rightarrow Smoking(Bob), 1.1;\]
-\[Friend(Bob, Charlotte) \land Smoking(Bob) \Rightarrow Smoking(Charlotte), 1.1;\]
-\[Friend(Charlotte, Anna) \land Smoking(Charlotte) \Rightarrow Smoking(Anna), 1.1;\]
-\[Friend(Charlotte, Bob) \land Smoking(Charlotte) \Rightarrow Smoking(Bob), 1.1;\]
-\[Friend(Charlotte, Charlotte) \land Smoking(Charlotte) \Rightarrow Smoking(Charlotte), 1.1;\]
+\[Friend(Elaine, Elaine) \land Smoking(Elaine) \Rightarrow Smoking(Elaine), 1.1;\]
+\[Friend(Elaine, Jerry) \land Smoking(Elaine) \Rightarrow Smoking(Jerry), 1.1;\]
+\[Friend(Elaine, George) \land Smoking(Elaine) \Rightarrow Smoking(George), 1.1;\]
+\[Friend(Jerry, Elaine) \land Smoking(Jerry) \Rightarrow Smoking(Elaine), 1.1;\]
+\[Friend(Jerry, Jerry) \land Smoking(Jerry) \Rightarrow Smoking(Jerry), 1.1;\]
+\[Friend(Jerry, George) \land Smoking(Jerry) \Rightarrow Smoking(George), 1.1;\]
+\[Friend(George, Elaine) \land Smoking(George) \Rightarrow Smoking(Elaine), 1.1;\]
+\[Friend(George, Jerry) \land Smoking(George) \Rightarrow Smoking(Jerry), 1.1;\]
+\[Friend(George, George) \land Smoking(George) \Rightarrow Smoking(George), 1.1;\]
 
 <p>From the groundings of the two formulas, we get a set of predicates:</p>
 
-\[\{Smoking(Anna), Smoking(Bob), Smoking(Charlotte), Cancer(Anna), Cancer(Bob),\]
+\[\{Smoking(Elaine), Smoking(Jerry), Smoking(George), Cancer(Elaine),\]
 
-\[Cancer(Charlotte), Friend(Anna, Anna), Friend(Anna, Bob), Friend(Anna, Charlotte),\]
+\[Cancer(Jerry), Cancer(George), Friend(Elaine, Elaine), Friend(Elaine, Jerry),\]
 
-\[Friend(Bob, Anna), Friend(Bob, Bob), Friend(Bob, Charlotte),\]
+\[Friend(Elaine, George), Friend(Jerry, Elaine), Friend(Jerry, Jerry),\]
 
-\[Friend(Charlotte, Anna), Friend(Charlotte, Bob), Friend(Bob, Charlotte)\}\]
+\[Friend(Jerry, George), Friend(George, Elaine),\]
 
-<p>Of course, we could generate a completely different set of ground formulas
-and ground predicates if we applied, say, the constants \(\{James, Jean-Luc,
-Kathryn, Benjamin\}\), or any number of objects we're interested in. Also, we
+\[Friend(George, Jerry), Friend(Jerry, George)\}\]
+
+<p>We now have the basic blocs for inference. Of course, we could generate a
+completely different set of ground formulas and ground predicates if we
+applied, say, the constants \(\{William, Anastasia, Kara, Saul, Karl, Tory,
+Felix, Laura\}\), or any number of objects we're interested in. Also, we
 don't need to have full data on all predicates, I'll show examples where we
 have no information at all.</p>
 
-<h2>Manticore</h2>
+<h2>From predicates and formulas to Markov network</h2>
 
-<p<a href=''>In the last post</a> I discussed the motivation / philosophy behind
-statistical relational learning, now it's time for maths &amp; code. If you
-want to follow the code in an interactive console, <a href=''>the code is on github</a>.</p>
+<p>Hey, we still don't have our network! To finally get our network, we'll
+create one node for each ground predicate, and link all nodes that are in the
+same formula. We our example with the constants \(\{Elaine, jerry, George\}\),
+we get the following Markov network:</p>
 
-<p>I wrote it in Haskell for the interactive mode, and <a
-  href='http://phdp.github.io/posts/2015-04-05-automated-reasoning.html'> sum
-types are particularly powerful for this kind of software</a>. I also have a
-bunch of C++/F# code lying around, but it's far less user-friendly.</p>
+<div class="imagecenter">
+  <img src="../images/ground_seinfeld.png" alt="ground network"/>
+</div>
 
-<p>Right now, it performs only exact inference, which is useful for tests... but it
-does not scale (the Markov networks generated by Markov logic are humongous). It'll
-be enough for exploring a model.</p>
+<p>For example, since we have</p>
 
-<h2>Example</h2>
+\[Friend(Elaine, Elaine) \land Smoking(Elaine) \Rightarrow Smoking(Elaine), 1.1;\]
 
-<p>Here's a complete session based on the classic <i>smoking</i> example from
-the <a href='https://homes.cs.washington.edu/~pedrod/kbmn.pdf'>paper that
-introduced Markov logic</a>.</p>
+<p>These nodes are linked in the network:</p>
+
+<div class="imagecenter">
+  <img src="../images/ground_seinfeld_hl.png" alt="ground network hl"/>
+</div>
+
+<p>To compute probabilities, we use the equation:</p>
+
+\[P(X = x) = \frac{1}{Z}\prod \]
+
+<p>If it can be a bit abstract, let's do the maths for the marginal probability:</p>
+
+\[P(Cancer(Jerry))\]
+
+\[P(Cancer(Jerry)) = \frac{P(Cancer(Jerry), Smoking(Elaine))}{Smoking(Elaine)}\]
+
+<h2>Code</h2>
+
+<p>Right now, it performs only exact inference, which is useful for tests...
+but it does not scale (the Markov networks generated by Markov logic are
+humongous). It'll be enough for exploring a model.</p>
 
 <p>First, import the Markov logic network module:</p>
 
