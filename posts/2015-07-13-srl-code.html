@@ -195,8 +195,7 @@ a function ask that have already the mln and terms supplied:</p>
 
 <p>Then we can ask queries with this function:</p>
 
-<pre><code class="haskell">ghci>
-ghci> ask "P(Cancer(Jerry), Cancer(Elaine))"
+<pre><code class="haskell">ghci> ask "P(Cancer(Jerry), Cancer(Elaine))"
 Just 0.3696834237837972
 ghci> ask "P(Cancer(Jerry) | Smoking(Jerry))"
 Just 0.8175744761936782
@@ -206,10 +205,9 @@ Just 0.8175744761936782
 them. So, even if there is no direct relationship between friendship and
 cancer, we have:</p>
 
-<pre><code class="haskell">ghci>
-ghci> ask "P(Cancer(Jerry) | Smoking(Elaine))"
+<pre><code class="haskell">ghci> ask "P(Cancer(Jerry) | Smoking(Elaine))"
 Just 0.6506081590969498
-λ ask "P(Cancer(Jerry) | Smoking(Elaine), Friend(Elaine, Jerry))"
+ghci> ask "P(Cancer(Jerry) | Smoking(Elaine), Friend(Elaine, Jerry))"
 Just 0.7043948532279771
 </code></pre>
 
@@ -217,10 +215,9 @@ Just 0.7043948532279771
 friend increases the chance that Jerry is smoking, and if we know he doesn't
 we'll get:</p>
 
-<pre><code class="haskell">ghci>
-λ ask "P(Cancer(Jerry) | Smoking(Elaine), Friend(Elaine, Jerry), !Smoking(Jerry))"
+<pre><code class="haskell">ghci> ask "P(Cancer(Jerry) | Smoking(Elaine), Friend(Elaine, Jerry), !Smoking(Jerry))"
 Just 0.4999999999999964
-λ ask "P(Cancer(Jerry) | !Smoking(Jerry))"
+ghci> ask "P(Cancer(Jerry) | !Smoking(Jerry))"
 Just 0.5000000000000238
 </code></pre>
 
@@ -354,9 +351,10 @@ Lee neither smokes nor has cancer. We'll get the following network:</p>
 </div>
 
 <p>The value of the predicates can then be used to determine the factors that
-are true (worth 1, in green) and those that are false (worth 0, in red). If
-you are confused about the values, it's probably because you misinterpret the
-logic symbol implies \(\Rightarrow\), go there for clarifications.</p>
+are true (worth 1, in green) and those that are false (worth 0, in red). If you
+are confused about the values, it's probably because you misinterpret the logic
+symbol implies \(\Rightarrow\), <a href='2015-07-12-fol.html'>check here for
+clarifications</a>.</p>
 
 <div class="imagecenter">
   <img src="../images/mln_kara_lee_factors_ass_p2.png" alt="Kara Lee network"/>
@@ -369,7 +367,7 @@ logic symbol implies \(\Rightarrow\), go there for clarifications.</p>
 <p>Computing the normalizing factor gives \(Z = 229210.5024\), so our
 probability is:</p>
 
-\[\frac{544.57}{229210.5024} = 0.0023759\]
+\[\frac{544.57}{229210.5024} = 0.0023759.\]
 
 <p>If we were to flip Cancer(Kara) to false, we'd get a lower probability (because smoking causes cancer):</p>
 
