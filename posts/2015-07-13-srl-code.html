@@ -30,15 +30,16 @@ logic, each associated with a weight. We'll use this for our examples:</p>
   </tr>
   <tr>
     <td>Smoking causes cancers</td>
-    <td align='center'>1.1</td>
+    <td align='center'>1.5</td>
   </tr>
   <tr>
     <td>If two people are friends and one smokes, then so does the other</td>
-    <td align='center'>1.5</td>
+    <td align='center'>1.1</td>
   </tr>
 </table>
 
-<p>Using a more formal representation for logic, we get:</p>
+<p>Using a more formal representation, with the weight following the
+first-order logic formula, we get:</p>
 
 \[\forall x: Smoking(x) \Rightarrow Cancer(x), 1.5;\]
 \[\forall x, y: Friend(x, y) \land Smoking(x) \Rightarrow Smoking(y), 1.1;\]
