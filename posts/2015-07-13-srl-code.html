@@ -83,13 +83,13 @@ formula to get a set of ground formulas.  The term <i>ground</i> means the
 variables are replaced by constants, that is, concrete objects. For example in
 mathematics you probably encountered first-order logic formulas like:</p>
 
-\[\forall x: Add(x, 0) = 0\]
+\[\forall x: Add(x, 0) = x.\]
 
 <p>We can ground this first-order logic formula by replacing <i>x</i> with an
 actual integer:</p>
 
-\[Add(47, 0) = 0\]
-\[Add(1729, 0) = 0\]
+\[Add(47, 0) = 47.\]
+\[Add(1729, 0) = 1729.\]
 
 <p>Similarly, applying the set of constants \(\{Elaine, Jerry, George\}\) to
 our first formula yields a set of ground formulas:</p>
@@ -243,26 +243,26 @@ models.</p>
 $ cabal repl
 </pre></div>
 
-<p>Then, we'll load the Markov logic network module and name it ML:</p>
+<p>Then, we'll load the Markov logic network module:</p>
 
-<pre><code class="haskell">ghci> import qualified Manticore.MarkovLogic as ML</code></pre>
+<pre><code class="haskell">ghci> import Manticore.MarkovLogic</code></pre>
 
 <p>The most straightforward way to build a Markov logic network is with
 <i>fromStrings</i>. This function takes an array of strings, each of which must
 be a valid first-order logic formula followed (or preceded) by a number (the
 weight of the formula). In our smoking example we have:</p>
 
-<pre><code class="haskell">ghci> let mln = ML.fromStrings ["∀x Smoking(x) ⇒ Cancer(x) 1.5", "∀x∀y Friend(x, y) ∧ Smoking(x) ⇒ Smoking(y) 1.1"]</code></pre>
+<pre><code class="haskell">ghci> let mln = fromStrings ["∀x Smoking(x) ⇒ Cancer(x) 1.5", "∀x∀y Friend(x, y) ∧ Smoking(x) ⇒ Smoking(y) 1.1"]</code></pre>
 
 <p>The strings were copy-pasted from Richardson and Domingos' paper, but the
 parsers is flexible and will accept a keyboard-friendly form too:</p>
 
-<pre><code class="haskell">ghci> ML.fromStrings ["1.5 forall x Smoking(x) implies Cancer(x)", "1.1 forall x, y Friend(x, y) and Smoking(x) implies Smoking(y)"]</code></pre>
+<pre><code class="haskell">ghci> fromStrings ["1.5 forall x Smoking(x) implies Cancer(x)", "1.1 forall x, y Friend(x, y) and Smoking(x) implies Smoking(y)"]</code></pre>
 
 <p>We can use <i>fmtMLN</i> function to print the Markov logic
 network:</p>
 
-<pre><code class="haskell">ghci> putStrLn (ML.fmtMLN mln)
+<pre><code class="haskell">ghci> putStrLn (fmtMLN mln)
 1.5                     ∀x Smoking(x) ⇒ Cancer(x)
 1.1                     ∀x ∀y Friend(x, y) ∧ Smoking(x) ⇒ Smoking(y)</code></pre>
 
@@ -275,23 +275,23 @@ Following our example in the last section we'll use:</p>
 <p>Then, we can query the network, say, what is the probability that Jerry has
 cancer?</p>
 
-<pre><code class="haskell">ghci> ML.ask mln cs "P(Cancer(Jerry))"
+<pre><code class="haskell">ghci> ask mln cs "P(Cancer(Jerry))"
 Just 0.6040175344121184</code></pre>
 
 <p>The function <i>ask</i> takes a Markov logic network, a list
 of terms (represented as a list of strings), and a string query. It will return
 Just P, with P being a probability in the [0.0, 1.0] range, or Nothing if the
 parser fails to read the query. To make the process a bit easier we'll create
-a function <i>ask</i> with the first two arguments supplied so we don't need to
+a function <i>query</i> with the first two arguments supplied so we don't need to
 repeat them ad nauseam:</p>
 
-<pre><code class="haskell">ghci> let ask = ML.ask mln cs</code></pre>
+<pre><code class="haskell">ghci> let query = ask mln cs</code></pre>
 
 <p>Then we can ask queries with this function:</p>
 
-<pre><code class="haskell">ghci> ask "P(Cancer(Jerry), Cancer(Elaine))"
+<pre><code class="haskell">ghci> query "P(Cancer(Jerry), Cancer(Elaine))"
 Just 0.3696834237837972
-ghci> ask "P(Cancer(Jerry) | Smoking(Jerry))"
+ghci> query "P(Cancer(Jerry) | Smoking(Jerry))"
 Just 0.8175744761936782
 </code></pre>
 
@@ -299,9 +299,9 @@ Just 0.8175744761936782
 they share predicates link them. So, even if there is no direct relationship
 between friendship and cancer, we have:</p>
 
-<pre><code class="haskell">ghci> ask "P(Cancer(Jerry) | Smoking(Elaine))"
+<pre><code class="haskell">ghci> query "P(Cancer(Jerry) | Smoking(Elaine))"
 Just 0.6506081590969498
-ghci> ask "P(Cancer(Jerry) | Smoking(Elaine), Friend(Elaine, Jerry))"
+ghci> query "P(Cancer(Jerry) | Smoking(Elaine), Friend(Elaine, Jerry))"
 Just 0.7043948532279771
 </code></pre>
 
@@ -309,9 +309,9 @@ Just 0.7043948532279771
 friend increases the chance that Jerry is smoking, and if we know he doesn't
 we'll get:</p>
 
-<pre><code class="haskell">ghci> ask "P(Cancer(Jerry) | Smoking(Elaine), Friend(Elaine, Jerry), !Smoking(Jerry))"
+<pre><code class="haskell">ghci> query "P(Cancer(Jerry) | Smoking(Elaine), Friend(Elaine, Jerry), !Smoking(Jerry))"
 Just 0.4999999999999964
-ghci> ask "P(Cancer(Jerry) | !Smoking(Jerry))"
+ghci> query "P(Cancer(Jerry) | !Smoking(Jerry))"
 Just 0.5000000000000238
 </code></pre>
 
@@ -325,8 +325,8 @@ existing Markov logic network, and will return a new Markov logic network with
 the formula added. Let's say we want to add a rule that <i>friends of friends are
 friends</i>, we could add this rule with a weight of 2.0 with:</p>
 
-<pre><code class="haskell">ghci> let mln' = ML.tell "2.0 A.x,y,z Friend(x, y) and Friend(y, z) => Friend(x, z)" mln
-ghci> putStrLn (ML.fmtMLN mln')
+<pre><code class="haskell">ghci> let mln' = tell "2.0 A.x,y,z Friend(x, y) and Friend(y, z) => Friend(x, z)" mln
+ghci> putStrLn (fmtMLN mln')
 1.5                     ∀x Smoking(x) ⇒ Cancer(x)
 2.0                     ∀x ∀y ∀z Friend(x, y) ∧ Friend(y, z) ⇒ Friend(x, z)
 1.1                     ∀x ∀y Friend(x, y) ∧ Smoking(x) ⇒ Smoking(y)</code></pre>
@@ -334,24 +334,24 @@ ghci> putStrLn (ML.fmtMLN mln')
 <p>We'll build an ask function for this network using the same constants
 (Jerry, Elaine, George):</p>
 
-<pre><code class="haskell">ghci> let ask' = ML.ask mln' cs</code></pre>
+<pre><code class="haskell">ghci> let query' = ask mln' cs</code></pre>
 
 <p>Let's compare how our first MLN behaved compare to our new one:</p>
 
-<pre><code class="haskell">ghci> ask "P(Smoking(George) | Smoking(Jerry), Friend(Jerry, Elaine), Friend(Elaine, George))"
+<pre><code class="haskell">ghci> query "P(Smoking(George) | Smoking(Jerry), Friend(Jerry, Elaine), Friend(Elaine, George))"
 Just 0.5877406718485353
-ghci> ask' "P(Smoking(George) | Smoking(Jerry), Friend(Jerry, Elaine), Friend(Elaine, George))"
+ghci> query' "P(Smoking(George) | Smoking(Jerry), Friend(Jerry, Elaine), Friend(Elaine, George))"
 Just 0.7080082227672424
 </code></pre>
 
 <p>Same query, same information, but with a different model (the MLN), we get
 different answers. Now, something is bugging me with the original model:</p>
 
-<pre><code class="haskell">ghci> ask "P(Cancer(Jerry) | Smoking(George))"
+<pre><code class="haskell">ghci> query "P(Cancer(Jerry) | Smoking(George))"
 Just 0.6506081590969498
-ghci> ask "P(Cancer(Jerry) | Smoking(George), Friend(George, Jerry))"
+ghci> query "P(Cancer(Jerry) | Smoking(George), Friend(George, Jerry))"
 Just 0.7043948532279771
-ghci> ask "P(Cancer(Jerry) | Smoking(George), Friend(Jerry, George))"
+ghci> query "P(Cancer(Jerry) | Smoking(George), Friend(Jerry, George))"
 Just 0.6506081590968945
 </code></pre>
 
@@ -371,17 +371,17 @@ is friend with \(y\), then \(y\) is friend with \(x\), and if \(x\) is not frien
 with \(y\), then \(y\) is not friend with \(x\). Since it's probabilistic, it doesn't
 need to be true all the time, but I give it a fairly high weight. And now we have:</p>
 
-<pre><code class="haskell">ghci> let mln'' = ML.tell "ForAll x, y: Friend(x, y) iff Friend(y, x) 2.0" mln
-ghci> putStrLn (ML.fmtMLN mln'')
+<pre><code class="haskell">ghci> let mln'' = tell "ForAll x, y: Friend(x, y) iff Friend(y, x) 2.0" mln
+ghci> putStrLn (fmtMLN mln'')
 1.5                     ∀x Smoking(x) ⇒ Cancer(x)
 1.1                     ∀x ∀y Friend(x, y) ∧ Smoking(x) ⇒ Smoking(y)
 2.0                     ∀x ∀y Friend(x, y) ⇔ Friend(y, x)
-ghci> let ask'' = ML.ask mln'' cs
-ghci> ask'' "P(Cancer(Jerry) | Smoking(George))"
+ghci> let query'' = ask mln'' cs
+ghci> query'' "P(Cancer(Jerry) | Smoking(George))"
 Just 0.6506081590969105
-ghci> ask'' "P(Cancer(Jerry) | Smoking(George), Friend(George, Jerry))"
+ghci> query'' "P(Cancer(Jerry) | Smoking(George), Friend(George, Jerry))"
 Just 0.7043948532279295
-ghci> ask'' "P(Cancer(Jerry) | Smoking(George), Friend(Jerry, George))"
+ghci> query'' "P(Cancer(Jerry) | Smoking(George), Friend(Jerry, George))"
 Just 0.7018023327893508
 </code></pre>
 
