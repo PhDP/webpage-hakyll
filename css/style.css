@@ -19,23 +19,23 @@ body {
 }
 
 a, a:link, a:visited, h1, h2, h3 {
-  color: #3255AF;
+  color: #00905d;
   text-decoration: none
 }
 
 a:hover {
-  color: #00905d;
+  color: #4487DE;
   text-decoration: none
 }
 
 ::selection {
   color: #fff;
-  background-color: #3255AF
+  background-color: #00905d
 }
 
 ::-moz-selection {
   color: #fff;
-  background-color: #3255AF
+  background-color: #00905d
 }
 
 body {
@@ -76,12 +76,12 @@ nav ul li a {
 }
 
 blockquote {
-  color: #3255AF;
+  color: #00905d;
   margin-top: 1em;
   margin-bottom: 1em;
   margin-left: 0;
   padding-left: 0.5em;
-  border-left: 0.3em solid #3255AF
+  border-left: 0.3em solid #00905d
 }
 
 img {
@@ -192,6 +192,6 @@ table.center {
 }
 
 tr.title {
-  color: #3255AF;
+  color: #00905d;
 }
 
