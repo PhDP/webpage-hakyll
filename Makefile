@@ -6,5 +6,5 @@ Main:
 	ghc --make Main.hs
 
 clean:
-	rm site.hi site.o
+	rm Main.hi Main.o
 

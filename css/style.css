@@ -9,7 +9,6 @@ div#hidden {
   color: #fff
 }
 
-
 div#header, h1, h2, h3 , nav {
   font-family: 'Montserrat', 'Source Han Sans', 'AR PL UKai CN', sans-serif
 }
@@ -48,7 +47,7 @@ body {
 #header {
   margin-top: 8px;
   position: relative;
-  height: 80px
+  height: 40px
 }
 
 nav {
