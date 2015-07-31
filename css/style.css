@@ -23,18 +23,18 @@ a, a:link, a:visited, h1, h2, h3 {
 }
 
 a:hover {
-  color: #2A71CE;
+  color: #ff9500;
   text-decoration: none
 }
 
 ::selection {
   color: #fff;
-  background-color: #00905d
+  background-color: #ff9500
 }
 
 ::-moz-selection {
   color: #fff;
-  background-color: #00905d
+  background-color: #ff9500
 }
 
 body {
