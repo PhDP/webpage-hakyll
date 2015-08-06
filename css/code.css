@@ -7,13 +7,13 @@
   display: block;
   overflow-x: auto;
   padding: 0.5em;
-  background: #eaeef3;
+  background: #eaf3f2;
   -webkit-text-size-adjust: none;
 }
 
 .hljs,
 .hljs-list .hljs-built_in {
-  color: #00193a;
+  color: #013a00;
 }
 
 .hljs-keyword,
@@ -44,7 +44,7 @@
 .hljs-link_label,
 .hljs-blockquote,
 .hljs-header {
-  color: #0048ab;
+  color: #00905D;
 }
 
 .hljs-decorator,
@@ -68,5 +68,5 @@
 .hljs-bullet,
 .hljs-sqbracket,
 .hljs-phony {
-  color: #4c81c9;
+  color: #5591A2;
 }
