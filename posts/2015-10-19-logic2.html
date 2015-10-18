@@ -1,0 +1,76 @@
+---
+title: SQL, relations, and logic
+tags: machine learning, epistemology
+---
+
+<p>In previous posts I wrote a short <a href='2015-07-13-srl-code.html'>intro
+  to logic</a> and <a href='2015-07-13-srl-code.html'>statistical relational
+  learning</a>. I just wanted to write a quick addendum to explain how logic is
+  related to SQL. It's pretty simple, but not everyone knows.</p>
+
+<p>So, let's say we have the first-order logic formula</p>
+
+<p>\[\forall x, y: Eat(x, y) \land \lnot Parasite(x) \iff Predator(x).\]</p>
+
+<p>The predicates (\(Eat, Parasite, Predator\)) can all be seen as tables (or
+relations in SQL parlance), with each argument of the predicate being a column.
+Let's build a small example with PostgreSQL (v9.4, Linux x64):</p>
+
+<pre><code class="sql">=# CREATE TABLE eat (x text, y text);
+
+=# INSERT INTO eat
+-# VALUES ('Wolf','Rabbit'), ('Wolf', 'Wapiti'),
+-# ('Sandworm','Vladimir Harkonen'), ('Parasite wasp','Juicy tarantula'),
+-# ('Juicy tarantula','Cockroach');
+
+=# SELECT * FROM eat;
+        x        |         y
+-----------------+-------------------
+ Wolf            | Rabbit
+ Wolf            | Wapiti
+ Sandworm        | Vladimir Harkonen
+ Parasite wasp   | Juicy tarantula
+ Juicy tarantula | Cockroach
+(5 rows)
+
+=# CREATE TABLE parasite (x text);
+
+=# INSERT INTO parasite
+-# VALUES ('Parasite wasp');
+
+=# SELECT * FROM parasite;
+       x  
+---------------
+ Parasite wasp
+(1 row)
+</code></pre>
+
+<p>Each entry is a ground predicate, that is, a predicate without variables
+or functions, so we find something like \(Eat(Wolf, Rabbit)\) but there is
+no way to have \(Eat(x, Rabbit)\) with \(x\) being a variable ranging on
+species. SQL is a subset of first-order logic, it's not as flexible.</p>
+
+<p>We are interested in the relation \(Predator\) but we don't have any table
+for it. No despair! SQL queries return relations, so we can get our predators
+with:</p>
+
+<pre><code class="sql">=# SELECT DISTINCT x
+-# FROM   eat
+-# LEFT   JOIN parasite p USING (x)
+-# WHERE  p.x IS NULL;
+
+        x
+-----------------
+ Wolf
+ Sandworm
+ Juicy tarantula
+(3 rows)
+</code></pre>
+
+<p>SQL uses the closed-world assumption (CWA): if a statement is true, it
+is known to be true. In short, in our table, \(parasite(hawk)\) is not true since
+hawk is absent from the parasite relation. It's assumed that, if it were true,
+the constant hawk would be present in the relation.</p>
+
+<p>But yeah, that's all, just think of tables as relations (or predicates).</p>
+

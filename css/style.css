@@ -18,23 +18,23 @@ body {
 }
 
 a, a:link, a:visited, h1, h2, h3 {
-  color: #00905d;
+  color: #008080;
   text-decoration: none
 }
 
 a:hover {
-  color: #ff9500;
+  color: #800000;
   text-decoration: none
 }
 
 ::selection {
   color: #fff;
-  background-color: #ff9500
+  background-color: #008080
 }
 
 ::-moz-selection {
   color: #fff;
-  background-color: #ff9500
+  background-color: #008080
 }
 
 body {
@@ -75,12 +75,12 @@ nav ul li a {
 }
 
 blockquote {
-  color: #00905d;
+  color: #008080;
   margin-top: 1em;
   margin-bottom: 1em;
   margin-left: 0;
   padding-left: 0.5em;
-  border-left: 0.3em solid #00905d
+  border-left: 0.3em solid #008080
 }
 
 img {
@@ -138,7 +138,7 @@ div.terminal pre {
   text-align: left;
   text-indent: 0px;
   border: 1px solid #dcdccd;
-  background-color: #082903;
+  background-color: #1F3437;
   color: #dcdccd;
   padding: 0.5em;
   margin: 0.5em
@@ -180,7 +180,7 @@ p.authors {
 }
 
 p#atom, p#atom a, p#atom a:hover {
-  color: #FFA500;
+  color: #800000;
   text-align: right
 }
 
@@ -191,6 +191,6 @@ table.center {
 }
 
 tr.title {
-  color: #00905d;
+  color: #008080;
 }
 
