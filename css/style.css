@@ -19,12 +19,12 @@ body {
 
 a, a:link, a:visited, h1, h2, h3 {
   color: #008080;
-  text-decoration: none
+  text-decoration: none;
 }
 
 a:hover {
   color: #800000;
-  text-decoration: none
+  text-decoration: none;
 }
 
 ::selection {
