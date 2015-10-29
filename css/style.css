@@ -23,7 +23,7 @@ a, a:link, a:visited, h1, h2, h3 {
 }
 
 a:hover {
-  color: #800000;
+  color: #C40000;
   text-decoration: none;
 }
 
@@ -180,7 +180,7 @@ p.authors {
 }
 
 p#atom, p#atom a, p#atom a:hover {
-  color: #800000;
+  color: #BE2424;
   text-align: right
 }
 
