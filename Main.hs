@@ -31,8 +31,10 @@ main =
           route idRoute
           compile compressCssCompiler
 
+      tags <- buildTags "posts/*" (fromCapture "tags/*.html")
+
       -- Parse html files
-      match "posts/*.html" $ parsePosts
+      match "posts/*.html" $ parsePosts tags
       match "index.html" $ parseHtml
       match "blog.html" $ parseHtml
 
@@ -54,6 +56,9 @@ postCtx =
   dateField "date" "%Y.%m.%d" `mappend`
   defaultContext
 
+postCtxWithTags :: Tags -> Context String
+postCtxWithTags tags = tagsField "tags" tags `mappend` postCtx
+
 postList :: Pattern -> ([Item String] -> Compiler [Item String]) -> Compiler String
 postList dir sortFilter = do
   posts   <- sortFilter =<< loadAll dir
@@ -70,13 +75,13 @@ parsePostList p = do
       >>= loadAndApplyTemplate "templates/default.html" postCtx
       >>= relativizeUrls
 
-parsePosts = do
+parsePosts tags = do
   route idRoute
   compile $ do
     getResourceBody
-      >>= loadAndApplyTemplate "templates/post.html" postCtx
+      >>= loadAndApplyTemplate "templates/post.html" (postCtxWithTags tags)
       >>= saveSnapshot "content" -- Snapshot for the atom.xml file
-      >>= loadAndApplyTemplate "templates/default.html" postCtx
+      >>= loadAndApplyTemplate "templates/default.html" (postCtxWithTags tags)
       >>= relativizeUrls
 
 parseHtml = do
@@ -92,8 +97,8 @@ parseHtml = do
 myFeedConfiguration :: FeedConfiguration
 myFeedConfiguration =
   FeedConfiguration {
-    feedTitle       = "Philippe Desjardins-Proulx -- Posts",
-    feedDescription = "Artificial Intelligence, Machine Learning, Programming, Technology, et cetera...",
+    feedTitle       = "Philippe Desjardins-Proulx's blog",
+    feedDescription = "Machine Learning, Programming, Technology, Philosophy, et cetera...",
     feedAuthorName  = "Philippe Desjardins-Proulx",
     feedAuthorEmail = "philippe.d.proulx@gmail.com",
     feedRoot        = "http://phdp.github.io/"
