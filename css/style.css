@@ -2,6 +2,9 @@ body {
   font-family: 'Source Sans Pro', 'Source Han Sans', 'AR PL UKai CN', sans-serif
 }
 
+.bold { font-weight: bold; }
+.mygreen { color: #00905D; }
+
 div#hidden {
   font-family: 'Ubuntu Mono', 'Source Han Sans', 'AR PL UKai CN';
   font-size: 120%;

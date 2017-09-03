@@ -36,7 +36,7 @@ main =
       -- Parse html files
       match "posts/*.html" $ parsePosts tags
       match "index.html" $ parseHtml
-      match "math-notes.html" $ parseHtml
+      match "papers.html" $ parseHtml
       match "blog.html" $ parseHtml
 
       -- Parse templates
