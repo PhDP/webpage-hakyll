@@ -3,7 +3,7 @@ body {
 }
 
 .bold { font-weight: bold; }
-.mygreen { color: #00905D; }
+.myblue { color: #3D85C6; }
 
 div#hidden {
   font-family: 'Ubuntu Mono', 'Source Han Sans', 'AR PL UKai CN';
@@ -21,23 +21,23 @@ body {
 }
 
 a, a:link, a:visited {
-  color: #00905D;
+  color: #3D85C6;
   text-decoration: none;
 }
 
 a:hover {
-  color: #005336;
+  color: #003399;
   text-decoration: none;
 }
 
 ::selection {
   color: #fff;
-  background-color: #00905D
+  background-color: #3D85C6
 }
 
 ::-moz-selection {
   color: #fff;
-  background-color: #00905D
+  background-color: #3D85C6
 }
 
 body {
@@ -78,12 +78,12 @@ nav ul li a {
 }
 
 blockquote {
-  color: #00905D;
+  color: #3D85C6;
   margin-top: 1em;
   margin-bottom: 1em;
   margin-left: 0;
   padding-left: 0.5em;
-  border-left: 0.3em solid #00905D
+  border-left: 0.3em solid #3D85C6
 }
 
 img {
@@ -190,6 +190,6 @@ table.center {
 }
 
 tr.title {
-  color: #00905D;
+  color: #3D85C6;
 }
 
