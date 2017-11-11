@@ -12,8 +12,12 @@ div#hidden {
   color: #fff
 }
 
-div#header, h1, h2, h3 , nav {
+div#header, h1, h2, h3, nav {
   font-family: 'Montserrat', 'Source Han Sans', 'AR PL UKai CN', sans-serif
+}
+
+nav {
+  font-weight: bold
 }
 
 body {
