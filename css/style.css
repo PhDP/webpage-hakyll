@@ -3,7 +3,7 @@ body {
 }
 
 .bold { font-weight: bold; }
-.myblue { color: #116272; }
+.myblue { color: #3D85C6; }
 
 div#hidden {
   font-family: 'Ubuntu Mono', 'Source Han Sans', 'AR PL UKai CN';
@@ -25,7 +25,7 @@ body {
 }
 
 a, a:link, a:visited {
-  color: #116272;
+  color: #3D85C6;
   text-decoration: none;
 }
 
@@ -36,12 +36,12 @@ a:hover {
 
 ::selection {
   color: #fff;
-  background-color: #116272
+  background-color: #3D85C6
 }
 
 ::-moz-selection {
   color: #fff;
-  background-color: #116272
+  background-color: #3D85C6
 }
 
 body {
@@ -82,12 +82,12 @@ nav ul li a {
 }
 
 blockquote {
-  color: #116272;
+  color: #3D85C6;
   margin-top: 1em;
   margin-bottom: 1em;
   margin-left: 0;
   padding-left: 0.5em;
-  border-left: 0.3em solid #116272
+  border-left: 0.3em solid #3D85C6
 }
 
 img {
@@ -194,6 +194,6 @@ table.center {
 }
 
 tr.title {
-  color: #116272;
+  color: #3D85C6;
 }
 
