@@ -29,7 +29,7 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="0.99"
-     inkscape:cx="219.02581"
+     inkscape:cx="43.773285"
      inkscape:cy="117.50151"
      inkscape:document-units="mm"
      inkscape:current-layer="layer1"
@@ -48,7 +48,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title />
+        <dc:title></dc:title>
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -60,11 +60,11 @@
     <text
        xml:space="preserve"
        style="font-style:normal;font-weight:normal;font-size:10.58333302px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
-       x="68.598793"
+       x="67.908798"
        y="277.185"
        id="text12"><tspan
          sodipodi:role="line"
-         x="68.598793"
+         x="67.908798"
          y="277.185"
          style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:22.57777786px;font-family:'AR PL UKai HK';-inkscape-font-specification:'AR PL UKai HK';text-align:center;text-anchor:middle;stroke-width:0.26458332"
          id="tspan19"><tspan
@@ -75,12 +75,12 @@
     <text
        xml:space="preserve"
        style="font-style:normal;font-weight:normal;font-size:10.58333302px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
-       x="24.595263"
+       x="23.98852"
        y="293.2912"
        id="text27"><tspan
          sodipodi:role="line"
          id="tspan25"
-         x="24.595263"
+         x="23.98852"
          y="293.2912"
          style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:21.16666603px;font-family:'EB Garamond 12 All SC';-inkscape-font-specification:'EB Garamond 12 All SC';stroke-width:0.26458332">akarui.ai</tspan></text>
   </g>
