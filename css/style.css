@@ -184,7 +184,9 @@ p.authors {
 
 p#atom, p#atom a, p#atom a:hover {
   color: #BE2424;
-  text-align: right
+  text-align: right;
+  font-style: italic;
+  font-weight: bold;
 }
 
 table.center {
