@@ -12,6 +12,11 @@ div#hidden {
   color: #fff
 }
 
+pre#plain {
+  font-family: 'Ubuntu Mono', 'Source Han Sans', 'AR PL UKai CN';
+  background-color: #E9F2FB;
+}
+
 div#header, h1, h2, h3, nav {
   font-family: 'Montserrat', 'Source Han Sans', 'AR PL UKai CN', sans-serif
 }
