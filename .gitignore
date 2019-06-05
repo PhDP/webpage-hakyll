@@ -3,10 +3,12 @@ _cache/
 _site/
 drafts/
 *.db
+.ghc*
 .cabal-sandbox/
 cabal.sandbox.config
 dist
-Main
+dist-newstyle
+Main*
 Main.*
 *.sketch
 files/tech_ent.pdf

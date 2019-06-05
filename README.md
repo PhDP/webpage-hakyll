@@ -4,3 +4,7 @@ The source is under the liberal [MIT license](http://opensource.org/licenses/MIT
 
 Blog posts and texts are under the [CC-BY 3.0 license](https://creativecommons.org/licenses/by/3.0/).
 
+Build with
+
+    $ cabal new-update
+    $ cabal new-build
