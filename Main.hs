@@ -55,7 +55,7 @@ main =
 -- Format for posts
 postCtx :: Context String
 postCtx =
-  dateField "date" "%Y.%m.%d" `mappend`
+  dateField "date" "%Y-%m-%d" `mappend`
   defaultContext
 
 postCtxWithTags :: Tags -> Context String
