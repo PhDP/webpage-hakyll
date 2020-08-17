@@ -103,5 +103,5 @@ myFeedConfiguration =
     feedDescription = "Machine Learning, Programming, Technology, Philosophy, et cetera...",
     feedAuthorName  = "Philippe Desjardins-Proulx",
     feedAuthorEmail = "philippe.d.proulx@gmail.com",
-    feedRoot        = "http://phdp.github.io/"
+    feedRoot        = "https://phdp.github.io/"
   }

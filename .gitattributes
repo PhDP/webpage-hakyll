@@ -1,3 +1,9 @@
+*.html linguist-language=Haskell
+js/* linguist-vendored
+css/* linguist-vendored
+posts/* linguist-vendored
+files/* linguist-vendored
+
 # Auto detect text files and perform LF normalization
 * text=auto
 
