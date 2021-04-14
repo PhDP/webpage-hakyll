@@ -8,3 +8,5 @@ Build with
 
     $ cabal new-update
     $ cabal new-build
+
+Currently built with ghc 8.10.4 and cabal 3.4.

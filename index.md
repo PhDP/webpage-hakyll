@@ -2,7 +2,9 @@
 title: About
 ---
 
-<a href='images/yuuki-3mo.jpg'><img style='margin-left:1em; margin-bottom:1em' src='images/yuuki-3mo-small.jpg' alt='Me with 3mo Yuuki' align='right'/></a>
+<a href='images/yuuki-3mo.jpg'>
+  <img style='margin-left:1em; margin-bottom:1em' src='images/yuuki-3mo-small.jpg' alt='Me with 3mo Yuuki' align='right'/>
+</a>
 
 <p>I'm a postdoctoral reseacher working on Artificial Intelligence applied to ecology at the <a
 href='https://poisotlab.io/'>Poisot lab</a> (<a href='https://www.umontreal.ca/en/'>University of
@@ -11,6 +13,14 @@ practice, means I spent a lot of time at the intersection of classical logic, ma
 (<i>fuzzy</i>) logics, and probability theory. I'm particularly interested in how these techniques
 can bring safer, more transparent intelligent systems. I currently focus on learning mathematical
 formulas from data, type theory, and higher-order probability theory.</p>
+
+<ul>
+  <li><b>Probabilistic Typed λ-Calculi:</b> My primary interest is how we can
+         combine the rich typed theories used to formalize mathematics (i.e. the calculus of constructions)
+         with probabilistic reasoning.</li>
+  <li><b>Symbolic Regression:</b> </li>
+  <li><b>Evolution/Theoretical Population Genetics:</b> .</li>
+</ul>
 
 <p>I did my Ph.D. at the <a href='http://ielab.recherche.usherbrooke.ca/'>Canada Research Chair on
 Integrative ecology</a> (<a href='http://www.usherbrooke.ca/'>Université de Sherbrooke</a>). My
@@ -21,20 +31,11 @@ Research</a>, and a hardware donation from <a href='http://www.nvidia.com/'>NVID
 my <a href='files/phdp-cv.pdf'>short CV here</a>.</p>
 
 <p>My work relies on many high-quality open-source projects, including
-  <a href='http://www.linux.com/'>Linux</a>,
-  <a href='https://www.debian.org/'>Debian</a>/<a href='http://www.ubuntu.com/'>Ubuntu</a>,
-  <a href='https://getfedora.org/'>Fedora</a>,
-  <a href='http://llvm.org/'>LLVM/clang</a>,
-  <a href='https://gcc.gnu.org/'>gcc</a>,
-  <a href='http://www.haskell.org/ghc/'>Glasgow Haskell Compiler</a>,
   <a href='http://www.rust-lang.org/'>Rust</a>,
-  <a href='https://cmake.org/'>cmake</a>,
-  <a href='http://eigen.tuxfamily.org/'>Eigen</a>,
-  <a href='http://www.gnome.org/'>gnome</a>,
-  <a href='http://git-scm.com/'>git</a>,
+  <a href='http://www.haskell.org/ghc/'>Glasgow Haskell Compiler</a>,
+  <a href='https://leanprover.github.io/'>Lean Theorem Prover</a>,
+  <a href='http://www.linux.com/'>Linux</a>/<a href='http://www.ubuntu.com/'>Ubuntu</a>,
+  <a href='http://llvm.org/'>LLVM</a>,
+  <a href='https://gcc.gnu.org/'>gcc</a>,
   <a href='http://www.vim.org/'>Vim</a>,
-  <a href='https://www.geany.org/'>Geany</a>,
-  <a href='https://code.visualstudio.com/'>Visual Code</a>,
-  <a href='https://www.postgresql.org/'>PostgreSQL</a>,
-  <a href='http://cassandra.apache.org/'>Cassandra</a>,
-  <a href='http://www.scylladb.com/'>ScyllaDB</a>.</p>
+  <a href='https://code.visualstudio.com/'>Visual Code</a>.</p>

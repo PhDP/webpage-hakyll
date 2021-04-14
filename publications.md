@@ -9,6 +9,12 @@ title: Publications
 <div class='publications'>
 
   <p>
+    T Strydom, M Catchen, F Banville, D Caron, G Dansereau, <b>P Desjardins-Proulx</b>, N Forero, G Higino, B Mercier, A Gonzalez, D Gravel, L Pollock, T Poisot.
+    <a href='https://ecoevorxiv.org/eu7k3/'><span class='bold myblue'>A Primer on Predicting Species Interaction Networks (Across Space and Time)</span></a>, 2021.
+    <a href='https://ecoevorxiv.org/eu7k3/'>[EcoEvoRxiv]</a>
+  </p>
+
+  <p>
     <b>P Desjardins-Proulx</b>, D Gravel, T Poisot. <a href='http://dx.doi.org/10.3389/fevo.2019.00402'><span class='bold myblue'>Artificial Intelligence for Ecological and Evolutionary Synthesis</span>, Frontiers in Ecology and Evolution 7: 402, 2019.
     DOI: 10.3389/fevo.2019.00402.</a>
     <a href='files/desjardins-proulx_2019.pdf'>[PDF]</a>
@@ -67,6 +73,10 @@ title: Publications
   </p>
 
   <p>
+    <b>P Desjardins-Proulx</b>. <span class='bold myblue'>A foot in the neutral trap</span>. <i>Trends in Ecology & Evolution</i> (invited comment), 2012.
+  </p>
+
+  <p>
     <b>P Desjardins-Proulx</b> and D Gravel. <a href='http://dx.doi.org/10.1002/ece3.292'><span class='bold myblue'>A complex speciation-richness relationship in a simple neutral model</span>. <i>Ecology and Evolution</i> 2(8):1781-1790, 2012.
     DOI: 10.1002/ece3.292</a>.
     <a href='files/desjardins-proulx_2012b.pdf'>[PDF]</a>
@@ -82,6 +92,11 @@ title: Publications
     <a href='files/desjardins-proulx_2012a.bib'>[BIB]</a>
     <a href='http://arxiv.org/abs/1102.2634'>[arXiv]</a>
     <a href='https://github.com/PhDP/origin'>[C source code]</a>
+  </p>
+
+  <p>
+    <b>P Desjardins-Proulx</b>. <span class='bold myblue'>L'origine de la biodiversité</span>. <i>Le Mouton Noir</i> (numéro spécial sur la biodiversité), 2010.
+    <a href="files/desjardins-proulx_2010.pdf">[PDF]</a>
   </p>
 
 </div>

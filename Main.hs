@@ -22,6 +22,10 @@ main =
           route idRoute
           compile copyFileCompiler
 
+      match "bib/*" $ compile biblioCompiler
+
+      match "csl/*" $ compile cslCompiler
+
       -- Get javascript files (copy 'as is')
       match "js/*" $ do
           route idRoute
@@ -34,11 +38,10 @@ main =
 
       tags <- buildTags "posts/*" (fromCapture "tags/*.html")
 
-      -- Parse html files
-      match "posts/*.html" $ parsePosts tags
-      match "index.html" $ parseHtml
-      match "papers.html" $ parseHtml
-      match "blog.html" $ parseHtml
+      match "posts/*.md" $ parsePosts tags "csl/alpha.csl" "bib/refs.bib"
+      match "index.md" $ parseMd
+      match "publications.md" $ parseMd
+      match "blog.html" $ parseBlog
 
       -- Parse templates
       match "templates/*" $ compile templateCompiler
@@ -68,30 +71,28 @@ postList dir sortFilter = do
   list    <- applyTemplateList itemTpl postCtx posts
   return list
 
-parsePostList p = do
-  route idRoute
+parsePosts tags bib style = do
+  route $ setExtension "html"
   compile $ do
-    let indexCtx = field "posts" $ \_ -> (postList p) $ fmap (take 50) . recentFirst
-    getResourceBody
-      >>= applyAsTemplate indexCtx
-      >>= loadAndApplyTemplate "templates/default.html" postCtx
-      >>= relativizeUrls
-
-parsePosts tags = do
-  route idRoute
-  compile $ do
-    getResourceBody
+    pandocBiblioCompiler bib style
       >>= loadAndApplyTemplate "templates/post.html" (postCtxWithTags tags)
       >>= saveSnapshot "content" -- Snapshot for the atom.xml file
       >>= loadAndApplyTemplate "templates/default.html" (postCtxWithTags tags)
       >>= relativizeUrls
 
-parseHtml = do
+parseBlog = do
   route idRoute
   compile $ do
-    let indexCtx = field "posts" $ \_ -> (postList "posts/*") $ fmap (take 30) . recentFirst
+    let indexCtx = field "posts" $ \_ -> (postList "posts/*") $ fmap (take 9999) . recentFirst
     getResourceBody
       >>= applyAsTemplate indexCtx
+      >>= loadAndApplyTemplate "templates/default.html" postCtx
+      >>= relativizeUrls
+
+parseMd = do
+  route $ setExtension "html"
+  compile $ do
+    pandocCompiler
       >>= loadAndApplyTemplate "templates/default.html" postCtx
       >>= relativizeUrls
 
@@ -102,6 +103,6 @@ myFeedConfiguration =
     feedTitle       = "Philippe Desjardins-Proulx's blog",
     feedDescription = "Machine Learning, Programming, Technology, Philosophy, et cetera...",
     feedAuthorName  = "Philippe Desjardins-Proulx",
-    feedAuthorEmail = "philippe.d.proulx@gmail.com",
+    feedAuthorEmail = "philippe.desjardins.proulx@umontreal.ca",
     feedRoot        = "https://phdp.github.io/"
   }
