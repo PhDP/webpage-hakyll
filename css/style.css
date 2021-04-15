@@ -8,9 +8,27 @@ body {
 
 .myblue { color: #3D85C6; }
 
+div.references {
+  font-size: 80%;
+}
+
+div.csl-entry {
+  display: flex;
+  padding-bottom: 1em;
+}
+
+div.csl-left-margin {
+  text-align: right;
+  flexbox: left;
+  padding-right: 1em;
+}
+
+div.csl-right-inline {
+  flexbox: right;
+}
+
 div#hidden {
   font-family: 'Ubuntu Mono', monospace;
-  font-size: 120%;
   text-align: center;
   color: #fff
 }

@@ -1,6 +1,5 @@
 {-# LANGUAGE OverloadedStrings #-}
 
-import Data.Monoid (mappend)
 import Hakyll
 import GHC.IO.Encoding
 
@@ -11,6 +10,12 @@ main =
     setFileSystemEncoding utf8
     setForeignEncoding utf8
     hakyll $ do
+
+      -- Bibliography:
+      match "bib/*" $ compile biblioCompiler
+
+      -- Style for bibliography:
+      match "csl/*" $ compile cslCompiler
 
       -- Get files (copy 'as is')
       match "files/*" $ do
@@ -34,11 +39,10 @@ main =
 
       tags <- buildTags "posts/*" (fromCapture "tags/*.html")
 
-      -- Parse html files
-      match "posts/*.html" $ parsePosts tags
-      match "index.html" $ parseHtml
-      match "papers.html" $ parseHtml
-      match "blog.html" $ parseHtml
+      match "posts/*.md" $ parsePosts tags "csl/nature.csl" "bib/refs.bib"
+      match "index.md" parseMd
+      match "publications.md" parseMd
+      match "blog.html" parseBlog
 
       -- Parse templates
       match "templates/*" $ compile templateCompiler
@@ -54,54 +58,51 @@ main =
 
 -- Format for posts
 postCtx :: Context String
-postCtx =
-  dateField "date" "%Y-%m-%d" `mappend`
-  defaultContext
+postCtx = dateField "date" "%Y-%m-%d" <> defaultContext
 
-postCtxWithTags :: Tags -> Context String
-postCtxWithTags tags = tagsField "tags" tags `mappend` postCtx
-
-postList :: Pattern -> ([Item String] -> Compiler [Item String]) -> Compiler String
-postList dir sortFilter = do
-  posts   <- sortFilter =<< loadAll dir
-  itemTpl <- loadBody "templates/post-item.html"
-  list    <- applyTemplateList itemTpl postCtx posts
-  return list
-
-parsePostList p = do
-  route idRoute
+parsePosts :: Tags -> String -> String -> Rules ()
+parsePosts tags bib style = do
+  route $ setExtension "html"
   compile $ do
-    let indexCtx = field "posts" $ \_ -> (postList p) $ fmap (take 50) . recentFirst
-    getResourceBody
-      >>= applyAsTemplate indexCtx
-      >>= loadAndApplyTemplate "templates/default.html" postCtx
-      >>= relativizeUrls
+    let postCtxWithTags tags = tagsField "tags" tags <> postCtx
 
-parsePosts tags = do
-  route idRoute
-  compile $ do
-    getResourceBody
+    pandocBiblioCompiler bib style
       >>= loadAndApplyTemplate "templates/post.html" (postCtxWithTags tags)
       >>= saveSnapshot "content" -- Snapshot for the atom.xml file
       >>= loadAndApplyTemplate "templates/default.html" (postCtxWithTags tags)
       >>= relativizeUrls
 
-parseHtml = do
+parseBlog :: Rules ()
+parseBlog = do
   route idRoute
   compile $ do
-    let indexCtx = field "posts" $ \_ -> (postList "posts/*") $ fmap (take 30) . recentFirst
+    let postList dir sortFilter = do
+          posts   <- sortFilter =<< loadAll dir
+          itemTpl <- loadBody "templates/post-item.html"
+          applyTemplateList itemTpl postCtx posts
+    
+    let indexCtx = field "posts" $ \_ -> postList "posts/*" $ fmap (take 9999) . recentFirst
+
     getResourceBody
       >>= applyAsTemplate indexCtx
       >>= loadAndApplyTemplate "templates/default.html" postCtx
       >>= relativizeUrls
+
+parseMd :: Rules ()
+parseMd = do
+  route $ setExtension "html"
+  compile $
+    pandocCompiler
+    >>= loadAndApplyTemplate "templates/default.html" postCtx
+    >>= relativizeUrls
 
 -- Config for the Atom.xml file.
 myFeedConfiguration :: FeedConfiguration
 myFeedConfiguration =
   FeedConfiguration {
     feedTitle       = "Philippe Desjardins-Proulx's blog",
-    feedDescription = "Machine Learning, Programming, Technology, Philosophy, et cetera...",
+    feedDescription = "Machine Learning, Mathematics, Typed Lambda-Calculi, Probabilistic Programming, Technology, etc etc...",
     feedAuthorName  = "Philippe Desjardins-Proulx",
-    feedAuthorEmail = "philippe.d.proulx@gmail.com",
+    feedAuthorEmail = "philippe.desjardins.proulx@umontreal.ca",
     feedRoot        = "https://phdp.github.io/"
   }
