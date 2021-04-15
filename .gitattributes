@@ -1,4 +1,6 @@
 *.html linguist-language=Haskell
+csl/* linguist-vendored
+bib/* linguist-vendored
 js/* linguist-vendored
 css/* linguist-vendored
 posts/* linguist-vendored
