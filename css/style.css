@@ -19,12 +19,13 @@ div.csl-entry {
 
 div.csl-left-margin {
   text-align: right;
-  flexbox: left;
   padding-right: 1em;
+  width: 2em;
+  flex-shrink: 0;
 }
 
 div.csl-right-inline {
-  flexbox: right;
+  /* */
 }
 
 div#hidden {
