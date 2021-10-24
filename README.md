@@ -6,7 +6,7 @@ Blog posts and texts are under the [CC-BY 3.0 license](https://creativecommons.o
 
 Build with
 
-    $ cabal new-update
-    $ cabal new-build
+    $ cabal v2-update
+    $ cabal v2-build
 
-Currently built with ghc 8.10.4 and cabal 3.4.
+Currently built with ghc 9.0.1 and cabal 3.4.
