@@ -16,7 +16,7 @@ main =
 
       -- -- Style for bibliography:
       -- match "csl/*" $ compile cslCompiler
-
+      
       -- Get files (copy 'as is')
       match "files/*" $ do
           route idRoute
@@ -81,7 +81,6 @@ parseBlog = do
           posts   <- sortFilter =<< loadAll dir
           itemTpl <- loadBody "templates/post-item.html"
           applyTemplateList itemTpl postCtx posts
-
     let indexCtx = field "posts" $ \_ -> postList "posts/*" $ fmap (take 9999) . recentFirst
 
     getResourceBody
