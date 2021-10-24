@@ -10,8 +10,7 @@ title: Publications
 
   <p>
     T Strydom, M Catchen, F Banville, D Caron, G Dansereau, <b>P Desjardins-Proulx</b>, N Forero, G Higino, B Mercier, A Gonzalez, D Gravel, L Pollock, T Poisot.
-    <a href='https://ecoevorxiv.org/eu7k3/'><span class='bold myblue'>A Primer on Predicting Species Interaction Networks (Across Space and Time)</span></a>, 2021.
-    <a href='https://ecoevorxiv.org/eu7k3/'>[EcoEvoRxiv]</a>
+    <a href='https://royalsocietypublishing.org/doi/pdf/10.1098/rstb.2021.0063/'><span class='bold myblue'>A Roadmap Towards Predicting Species Interaction Networks (Across Space and Time)</span></a>, Philosophical Transactions of the Royal Society B 376: 20210063, 2021.
   </p>
 
   <p>

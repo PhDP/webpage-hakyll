@@ -1,15 +1,39 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,700;1,400;1,700&family=Noto+Sans+JP:wght@400;700&family=Source+Sans+Pro:ital,wght@0,400;0,700;1,400;1,700&family=Ubuntu+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Noto+Sans+JP:wght@400;700&family=Source+Code+Pro:ital,wght@0,400;0,700;1,400;1,700&family=Source+Sans+Pro:ital,wght@0,400;0,700;1,400;1,700&display=swap');
 
 body {
   font-family: 'Source Sans Pro', 'Noto Sans JP', sans-serif;
+}
+
+div#header, h1, h2, h3, nav {
+  font-family: 'Montserrat', 'Source Sans Pro', 'Noto Sans JP', sans-serif;
 }
 
 .bold { font-weight: bold; }
 
 .myblue { color: #3D85C6; }
 
+div.references {
+  font-size: 80%;
+}
+
+div.csl-entry {
+  display: flex;
+  padding-bottom: 1em;
+}
+
+div.csl-left-margin {
+  text-align: right;
+  padding-right: 1em;
+  width: 2em;
+  flex-shrink: 0;
+}
+
+div.csl-right-inline {
+  /* */
+}
+
 div#hidden {
-  font-family: 'Ubuntu Mono', monospace;
+  font-family: 'Source Code Pro', monospace;
   text-align: center;
   color: #fff
 }
@@ -19,12 +43,8 @@ div#hidden {
 }
 
 pre#plain {
-  font-family: 'Ubuntu Mono', monospace;
+  font-family: 'Source Code Pro', monospace;
   background-color: #E9F2FB;
-}
-
-div#header, h1, h2, h3, nav {
-  font-family: 'Montserrat', sans-serif;
 }
 
 nav {
@@ -63,14 +83,14 @@ body {
 }
 
 #header {
-  margin-top: 8px;
+  margin-top: 1em;
   position: relative;
-  height: 40px
+  height: 2em;
 }
 
 nav {
-  margin: 5px;
-  font-size: 22px;
+  margin: 0.5em;
+  font-size: 1.4em;
   width: 100%
 }
 
@@ -152,7 +172,7 @@ div.figure p {
 }
 
 div.terminal pre {
-  font-family: 'Ubuntu Mono', sans-serif;
+  font-family: 'Source Code Pro', monospace;
   text-align: left;
   text-indent: 0px;
   border: 1px solid #dcdccd;
@@ -168,13 +188,13 @@ div#header h1 {
   text-align: center
 }
 
-h2 {
-  text-align: left
-}
-
 h1 {
   text-align: center;
   font-size: 180%
+}
+
+h2 {
+  text-align: left
 }
 
 h2, li#posts{
@@ -193,11 +213,8 @@ p.authors {
   text-align: right
 }
 
-p#atom, p#atom a, p#atom a:hover {
+li a#atom, li a:hover#atom {
   color: #BE2424;
-  text-align: right;
-  font-style: italic;
-  font-weight: bold;
 }
 
 table.center {

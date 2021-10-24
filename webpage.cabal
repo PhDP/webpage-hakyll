@@ -6,12 +6,13 @@ description:         My personal page... What more to say?
 homepage:            https://phdp.github.io/
 license:             MIT
 author:              Philippe Desjardins-Proulx
-maintainer:          philippe.d.proulx@gmail.com
+maintainer:          philippe.desjardins.proulx@umontreal.ca
 category:            Web
 build-type:          Simple
 
 executable webpage
   default-language:    Haskell2010
   main-is:             Main.hs
-  build-depends:       base, hakyll
-
+  build-depends:
+    base,
+    hakyll == 4.15.0.1
