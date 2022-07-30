@@ -6,12 +6,25 @@
   <title>Philippe Desjardins-Proulx</title>
   <link rel='stylesheet' media='screen' href='/css/style.css' type='text/css'/>
   <link rel='stylesheet' media='screen' href='/css/code.css'  type='text/css'/>
-  <link href='//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css' rel='stylesheet' type='text/css'/>
+  <link href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css' rel='stylesheet' type='text/css'/>
   <script type='text/x-mathjax-config'>
     MathJax.Hub.Config({tex2jax: {inlineMath: [['\\(','\\)']]}});
   </script>
   <script type='text/javascript' async
     src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-MML-AM_CHTML'>
+  </script>
+  <script>
+    function toggleMode() {
+      var element = document.body;
+      element.classList.toggle('dark-mode');
+      var text = document.getElementById('mode-icon');
+      // window.alert(text.innerHTML);
+      if (text.innerHTML === "<i class='fa-solid fa-sun'></i>") {
+        text.innerHTML = "<i class='fa-solid fa-moon'></i>";
+      } else {
+        text.innerHTML = "<i class='fa-solid fa-sun'></i>";
+      }
+    }
   </script>
 </head>
 
@@ -20,14 +33,15 @@
 <div id='header'>
   <nav>
     <ul>
-      <li>( Philippe Desjardins-Proulx</li>
-      <li><a href='/index.html'>about</a></li>
+      <li><a href='/index.html'>Philippe Desjardins-Proulx</a></li>
+      <li><a href='/blog.html'>blog</a></li>
       <li><a href='/publications.html'>publications</a></li>
-      <li><a href='https://github.com/PhDP'><i class='fa fa-github'></i></a></li>
-      <li><a href='https://ca.linkedin.com/in/philippedp'><i class='fa fa-linkedin-square'></i></a></li>
-      <li><a href='mailto:philippe.desjardins.proulx@umontreal.ca'><i class='fa fa-envelope'></i></a>)</li>
-      <!-- <li><a href='https://twitter.com/LambdaPhDP'><i class='fa fa-twitter'></i></a></li> -->
-      <!-- <li><a id='atom' href='/atom.xml'><i class='fa fa-rss'></i></a>)</li> -->
+      <li><a href='https://github.com/PhDP'><i class='fa-brands fa-github'></i></a></li>
+      <li><a href='https://twitter.com/LambdaPhDP'><i class='fa-brands fa-twitter'></i></a></li>
+      <li><a href='https://ca.linkedin.com/in/philippedp'><i class='fa-brands fa-linkedin'></i></a></li>
+      <li><a href='mailto:philippe.desjardins.proulx@umontreal.ca'><i class='fa fa-envelope'></i></a></li>
+      <li><a onClick='toggleMode();' style='cursor: pointer; cursor: hand;'><span id='mode-icon'><i class='fa-solid fa-sun'></i></span></a></li>
+      <li><a id='atom' href='/atom.xml'><i class='fa-solid fa-square-rss'></i></a></li>
     </ul>
   </nav>
 </div>
@@ -36,7 +50,7 @@
   $body$
 
   <div id='hidden'>
-    let world = "<span id='jp'>世界</span>" in print &#36; "Hello " ++ world ++ ", gens una sumus!"
+    let world = "<span id='jp'>世界</span>" in print &#36; "Hello " ++ world ++ "! Gens una sumus!"
   </div>
 </div>
 

@@ -16,7 +16,7 @@ main =
 
       -- -- Style for bibliography:
       -- match "csl/*" $ compile cslCompiler
-      
+
       -- Get files (copy 'as is')
       match "files/*" $ do
           route idRoute
@@ -42,7 +42,7 @@ main =
       -- match "posts/*.md" $ parsePosts tags "csl/aims-press.csl" "bib/refs.bib"
       match "index.md" parseMd
       match "publications.md" parseMd
-      -- match "books.md" parseMd
+      match "readings.md" parseMd
       -- match "blog.html" parseBlog
 
       -- Parse templates
@@ -106,4 +106,3 @@ myFeedConfiguration =
     feedAuthorEmail = "philippe.desjardins.proulx@umontreal.ca",
     feedRoot        = "https://phdp.github.io/"
   }
-

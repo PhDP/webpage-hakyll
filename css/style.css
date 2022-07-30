@@ -2,6 +2,16 @@
 
 body {
   font-family: 'Source Sans Pro', 'Noto Sans JP', sans-serif;
+  color: #333333;
+  width: 1000px;
+  margin: 0 auto;
+  margin-top: 0;
+  padding: 0
+}
+
+.dark-mode {
+  background-color: #121212;
+  color: #ffffffbe;
 }
 
 div#header, h1, h2, h3, nav {
@@ -11,6 +21,8 @@ div#header, h1, h2, h3, nav {
 .bold { font-weight: bold; }
 
 .myblue { color: #3D85C6; }
+
+.myblue .dark-mode { color: #167673; }
 
 div.references {
   font-size: 80%;
@@ -38,6 +50,10 @@ div#hidden {
   color: #fff
 }
 
+.dark-mode div#hidden {
+  color: #121212
+}
+
 #jp {
   font-family: 'Noto Sans JP', sans-serif;
 }
@@ -51,18 +67,22 @@ nav {
   font-weight: bold
 }
 
-body {
-  color: #333333
-}
-
 a, a:link, a:visited {
   color: #3D85C6;
   text-decoration: none;
 }
 
+.dark-mode a, .dark-mode a:link, .dark-mode a:visited {
+  color: #167673;
+}
+
 a:hover {
   color: #003399;
   text-decoration: none;
+}
+
+.dark-mode a:hover {
+  color: #2CB0AB;
 }
 
 ::selection {
@@ -75,11 +95,14 @@ a:hover {
   background-color: #3D85C6
 }
 
-body {
-  width: 1000px;
-  margin: 0 auto;
-  margin-top: 0;
-  padding: 0
+.dark-mode ::selection {
+  color: #fff;
+  background-color: #167673
+}
+
+.dark-mode ::-moz-selection {
+  color: #fff;
+  background-color: #167673
 }
 
 #header {
