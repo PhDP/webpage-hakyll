@@ -9,9 +9,9 @@ body {
   padding: 0
 }
 
-.dark-mode {
+.dark body {
   background-color: #121212;
-  color: #ffffffbe;
+  color: #C5C5C5;
 }
 
 div#header, h1, h2, h3, nav {
@@ -22,7 +22,11 @@ div#header, h1, h2, h3, nav {
 
 .myblue { color: #3D85C6; }
 
-.myblue .dark-mode { color: #167673; }
+.dark .myblue { color: #167673; }
+
+.mode-icon-color { color: #3D85C6; }
+
+.dark .mode-icon-color { color: #167673; }
 
 div.references {
   font-size: 80%;
@@ -50,7 +54,7 @@ div#hidden {
   color: #fff
 }
 
-.dark-mode div#hidden {
+.dark div#hidden {
   color: #121212
 }
 
@@ -72,7 +76,7 @@ a, a:link, a:visited {
   text-decoration: none;
 }
 
-.dark-mode a, .dark-mode a:link, .dark-mode a:visited {
+.dark a, .dark a:link, .dark a:visited {
   color: #167673;
 }
 
@@ -81,7 +85,7 @@ a:hover {
   text-decoration: none;
 }
 
-.dark-mode a:hover {
+.dark a:hover {
   color: #2CB0AB;
 }
 
@@ -95,12 +99,12 @@ a:hover {
   background-color: #3D85C6
 }
 
-.dark-mode ::selection {
+.dark ::selection {
   color: #fff;
   background-color: #167673
 }
 
-.dark-mode ::-moz-selection {
+.dark ::-moz-selection {
   color: #fff;
   background-color: #167673
 }
@@ -130,8 +134,15 @@ nav ul li {
 
 nav ul li a {
   padding: 6px 3px 4px 3px;
-  margin-left: 10px;
-  margin-right: 10px;
+  margin-left: 0px;
+  margin-right: 0px;
+  text-decoration: none
+}
+
+nav ul .nav-li-icon li a {
+  padding: 0px 0px 0px 0px;
+  margin-left: 50px;
+  margin-right: 0px;
   text-decoration: none
 }
 

@@ -15,4 +15,4 @@ executable webpage
   main-is:             Main.hs
   build-depends:
     base,
-    hakyll == 4.15.0.1
+    hakyll == 4.15.1.1

@@ -4,9 +4,11 @@ The source is under the liberal [MIT license](http://opensource.org/licenses/MIT
 
 Blog posts and texts are under the [CC-BY 3.0 license](https://creativecommons.org/licenses/by/3.0/).
 
+The code for the dark mode is adapter from: https://www.codemzy.com/blog/dark-mode-to-static-site.
+
 Build with
 
-    $ cabal v2-update
-    $ cabal v2-build
+    $ cabal new-update
+    $ cabal new-build
 
 Currently built with ghc 9.0.1 and cabal 3.4.

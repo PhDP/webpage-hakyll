@@ -14,17 +14,33 @@
     src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-MML-AM_CHTML'>
   </script>
   <script>
-    function toggleMode() {
-      var element = document.body;
-      element.classList.toggle('dark-mode');
-      var text = document.getElementById('mode-icon');
-      // window.alert(text.innerHTML);
-      if (text.innerHTML === "<i class='fa-solid fa-sun'></i>") {
-        text.innerHTML = "<i class='fa-solid fa-moon'></i>";
-      } else {
-        text.innerHTML = "<i class='fa-solid fa-sun'></i>";
+    function setDarkMode(dark, preference) {
+      if (dark) {
+        preference !== "dark" ? localStorage.setItem('theme', 'dark') : localStorage.removeItem('theme');
+        document.documentElement.classList.add('dark');
+      } else if (!dark) {
+        preference !== "light" ? localStorage.setItem('theme', 'light') : localStorage.removeItem('theme');
+        document.documentElement.classList.remove('dark');
       }
+    };
+    const preference = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+    if (localStorage.getItem('theme') === "dark" || (!('theme' in localStorage) && preference === 'dark')) {
+      setDarkMode(true, preference);
     }
+    window.onload = function () {
+      document.getElementById('button-dark-mode').addEventListener('click', function() {
+        setDarkMode(!document.documentElement.classList.contains('dark'), preference);
+
+        const cl = document.querySelector("#button-dark-mode > i").classList;
+        if (document.documentElement.classList.contains('dark') && cl.contains('fa-moon')) {
+          cl.add('fa-sun');
+          cl.remove('fa-moon');
+        } else if (!document.documentElement.classList.contains('dark') && cl.contains('fa-sun')) {
+          cl.add('fa-moon');
+          cl.remove('fa-sun');
+        }
+      });
+    };
   </script>
 </head>
 
@@ -36,12 +52,12 @@
       <li><a href='/index.html'>Philippe Desjardins-Proulx</a></li>
       <li><a href='/blog.html'>blog</a></li>
       <li><a href='/publications.html'>publications</a></li>
-      <li><a href='https://github.com/PhDP'><i class='fa-brands fa-github'></i></a></li>
-      <li><a href='https://twitter.com/LambdaPhDP'><i class='fa-brands fa-twitter'></i></a></li>
-      <li><a href='https://ca.linkedin.com/in/philippedp'><i class='fa-brands fa-linkedin'></i></a></li>
-      <li><a href='mailto:philippe.desjardins.proulx@umontreal.ca'><i class='fa fa-envelope'></i></a></li>
-      <li><a onClick='toggleMode();' style='cursor: pointer; cursor: hand;'><span id='mode-icon'><i class='fa-solid fa-sun'></i></span></a></li>
-      <li><a id='atom' href='/atom.xml'><i class='fa-solid fa-square-rss'></i></a></li>
+      <li class='nav-li-icon'><a href='https://github.com/PhDP'><i class='fa-brands fa-github'></i></a></li>
+      <li class='nav-li-icon'><a href='https://twitter.com/LambdaPhDP'><i class='fa-brands fa-twitter'></i></a></li>
+      <li class='nav-li-icon'><a href='https://ca.linkedin.com/in/philippedp'><i class='fa-brands fa-linkedin'></i></a></li>
+      <li class='nav-li-icon'><a href='mailto:philippe.desjardins.proulx@umontreal.ca'><i class='fa fa-envelope'></i></a></li>
+      <li class='nav-li-icon'><a href=''><span id='button-dark-mode'><i class='fa-solid fa-sun mode-icon-color'></i></span></a></li>
+      <li class='nav-li-icon'><a id='atom' href='/atom.xml'><i class='fa-solid fa-square-rss'></i></a></li>
     </ul>
   </nav>
 </div>

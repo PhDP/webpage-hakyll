@@ -11,11 +11,11 @@ main =
     setForeignEncoding utf8
     hakyll $ do
 
-      -- -- Bibliography:
-      -- match "bib/*" $ compile biblioCompiler
+      -- Bibliography:
+      match "bib/*" $ compile biblioCompiler
 
-      -- -- Style for bibliography:
-      -- match "csl/*" $ compile cslCompiler
+      -- Style for bibliography:
+      match "csl/*" $ compile cslCompiler
 
       -- Get files (copy 'as is')
       match "files/*" $ do
@@ -37,13 +37,13 @@ main =
           route idRoute
           compile compressCssCompiler
 
-      -- tags <- buildTags "posts/*" (fromCapture "tags/*.html")
+      tags <- buildTags "posts/*" (fromCapture "tags/*.html")
 
-      -- match "posts/*.md" $ parsePosts tags "csl/aims-press.csl" "bib/refs.bib"
+      match "posts/*.md" $ parsePosts tags "csl/nature.csl" "bib/refs.bib"
       match "index.md" parseMd
       match "publications.md" parseMd
       match "readings.md" parseMd
-      -- match "blog.html" parseBlog
+      match "blog.html" parseBlog
 
       -- Parse templates
       match "templates/*" $ compile templateCompiler
@@ -106,3 +106,4 @@ myFeedConfiguration =
     feedAuthorEmail = "philippe.desjardins.proulx@umontreal.ca",
     feedRoot        = "https://phdp.github.io/"
   }
+
