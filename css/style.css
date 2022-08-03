@@ -9,6 +9,32 @@ body {
   padding: 0
 }
 
+.ml-auto {
+  display: flex;
+  justify-content: flex-end;
+}
+
+#dark-mode-icon {
+  color: #C5C5C5;
+}
+
+#light-mode-icon {
+  color: #C5C5C5;
+}
+
+.ml-auto button {
+  background-color: transparent;
+  border-color: transparent;
+}
+
+html.dark #button-dark-mode #light-mode-icon {
+  display: none;
+}
+
+html:not(.dark) #button-dark-mode #dark-mode-icon {
+  display: none;
+}
+
 .dark body {
   background-color: #121212;
   color: #C5C5C5;
