@@ -37,6 +37,28 @@ header, h1, h2, h3, nav {
   font-family: 'Montserrat', 'Source Sans Pro', 'Noto Sans JP', sans-serif;
 }
 
+nav {
+  font-weight: bold;
+  font-size: 1.4em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  margin-left: auto;
+}
+
+.nav-item {
+  padding: 0.3em;
+}
+
+.nav-par {
+  padding: 0em;
+}
+
+.nav-item a#atom, .nav-item a:hover#atom {
+  color: #BE2424;
+}
+
 .bold { font-weight: bold; }
 
 .myblue, #light-mode-icon, .mode-icon-color { color: #3D85C6; }
@@ -82,10 +104,6 @@ pre#plain {
   background-color: #E9F2FB;
 }
 
-nav {
-  font-weight: bold
-}
-
 a, a:link, a:visited {
   color: #3D85C6;
   text-decoration: none;
@@ -122,43 +140,6 @@ a:hover {
 .dark ::-moz-selection {
   color: #fff;
   background-color: #167673
-}
-
-header {
-  margin-top: 0em;
-  position: relative;
-  height: 2em;
-}
-
-nav {
-  margin: 0.5em;
-  font-size: 1.4em;
-  width: 100%
-}
-
-nav ul {
-  padding: 6px 0 7px 0;
-  margin: 0;
-  text-align: center
-}
-
-nav ul li {
-  text-align: center;
-  display: inline
-}
-
-nav ul li a {
-  padding: 6px 3px 4px 3px;
-  margin-left: 0px;
-  margin-right: 0px;
-  text-decoration: none
-}
-
-nav ul .nav-li-icon li a {
-  padding: 0px 0px 0px 0px;
-  margin-left: 50px;
-  margin-right: 0px;
-  text-decoration: none
 }
 
 blockquote {
@@ -236,12 +217,6 @@ div.terminal pre {
   margin: 0.5em;
 }
 
-div#header h1 {
-  font-size: 26 px;
-  text-indent: 0;
-  text-align: center;
-}
-
 h1 {
   text-align: center;
   font-size: 180%;
@@ -251,7 +226,7 @@ h2 {
   text-align: left;
 }
 
-h2, li#posts{
+h2, li#posts {
   font-size: 120%;
 }
 
@@ -267,10 +242,6 @@ p.authors {
   text-align: right;
 }
 
-li a#atom, li a:hover#atom {
-  color: #BE2424;
-}
-
 table.center {
   margin-left: auto;
   margin-right: auto;
@@ -280,3 +251,4 @@ table.center {
 tr.title {
   color: #3D85C6;
 }
+
