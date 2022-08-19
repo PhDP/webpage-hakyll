@@ -85,10 +85,13 @@ a:hover {
 nav, h1, h2, h3 {
   font-family: 'Montserrat', 'Source Sans Pro', 'Noto Sans JP', sans-serif;
   font-weight: bold;
+}
+  
+h1, h2, h3 {
   color: #3D85C6;
 }
 
-.dark nav, .dark h1, .dark h2, .dark h3 {
+.dark h1, .dark h2, .dark h3 {
   color: #167673;
 }
 
@@ -130,10 +133,6 @@ nav {
 
 .nav-par {
   padding: 0em;
-}
-
-.nav-item a#atom, .nav-item a:hover#atom {
-  color: #BE2424;
 }
 
 /* Main */

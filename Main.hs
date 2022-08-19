@@ -42,20 +42,10 @@ main =
       match "posts/*.md" $ parsePosts tags "csl/nature.csl" "bib/refs.bib"
       match "index.md" parseMd
       match "publications.md" parseMd
-      match "readings.md" parseMd
       match "blog.html" parseBlog
 
       -- Parse templates
       match "templates/*" $ compile templateCompiler
-
-      -- Built the atom.xml file
-      create ["atom.xml"] $ do
-        route idRoute
-        compile $ do
-          let feedCtx = postCtx `mappend` bodyField "description"
-          posts <- fmap (take 10) . recentFirst =<<
-            loadAllSnapshots "posts/*" "content"
-          renderAtom myFeedConfiguration feedCtx posts
 
 -- Format for posts
 postCtx :: Context String
@@ -69,7 +59,7 @@ parsePosts tags bib style = do
 
     pandocBiblioCompiler bib style
       >>= loadAndApplyTemplate "templates/post.html" (postCtxWithTags tags)
-      >>= saveSnapshot "content" -- Snapshot for the atom.xml file
+      >>= saveSnapshot "content"
       >>= loadAndApplyTemplate "templates/default.html" (postCtxWithTags tags)
       >>= relativizeUrls
 
@@ -95,15 +85,4 @@ parseMd = do
     pandocCompiler
     >>= loadAndApplyTemplate "templates/default.html" postCtx
     >>= relativizeUrls
-
--- Config for the Atom.xml file.
-myFeedConfiguration :: FeedConfiguration
-myFeedConfiguration =
-  FeedConfiguration {
-    feedTitle       = "Philippe Desjardins-Proulx's blog",
-    feedDescription = "Machine Learning, Mathematics, Typed Lambda-Calculi, Probabilistic Programming, Technology, etc etc...",
-    feedAuthorName  = "Philippe Desjardins-Proulx",
-    feedAuthorEmail = "philippe.desjardins.proulx@umontreal.ca",
-    feedRoot        = "https://phdp.github.io/"
-  }
 
