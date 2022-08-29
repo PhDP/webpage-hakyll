@@ -249,11 +249,7 @@ blockquote {
   display: inline;
 }
 
-.hamburger-menu {
-  display: none;
-}
-
-#mobile-menu {
+.hamburger-menu, #mobile-menu, #vertical-menu {
   display: none;
 }
 
