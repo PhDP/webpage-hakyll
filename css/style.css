@@ -138,9 +138,9 @@ nav {
 /* Main */
 
 main {
-  font-size: 22px;
-  padding: 0 12px;
-  margin-bottom: 36px;
+  font-size: 1.4em;
+  padding: 0 1em;
+  margin-bottom: 3em;
 }
 
 /* Footer */
@@ -205,7 +205,7 @@ pre#plain {
 .terminal pre {
   font-family: 'Source Code Pro', monospace;
   text-align: left;
-  text-indent: 0px;
+  text-indent: 0;
   border: 1px solid #DCDCCD;
   background-color: #1F3437;
   color: #DCDCCD;
@@ -242,4 +242,51 @@ blockquote {
 }
 
 /* Figures */
+
+/* Mobile View */
+  
+.normal-menu {
+  display: inline;
+}
+
+.hamburger-menu {
+  display: none;
+}
+
+#mobile-menu {
+  display: none;
+}
+
+@media (max-width: 1024px) {
+  body {
+    width: auto;
+  }
+
+  .normal-menu {
+    display: none;
+  }
+
+  .hamburger-menu {
+    display: inline;
+  }
+
+  #mobile-menu {
+    display: block;
+    text-align: center;
+    font-weight: bold;
+    background-color: #ACC9E3; 
+  }
+  
+  .dark #mobile-menu {
+    background-color: #001716; 
+  }
+  
+  #mobile-menu a {
+    color: #333333;
+  }
+  
+  .dark #mobile-menu a {
+    color: #C5C5C5;
+  }
+}
 
