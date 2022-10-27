@@ -23,12 +23,13 @@ href='https://www.nvidia.com/'>NVIDIA</a>.</p>
 
 <p>My work depends on many high-quality open-source projects:
   <a href='https://www.rust-lang.org/'>Rust</a>,
-  <a href='https://leanprover.github.io/'>Lean</a>,
   <a href='https://www.haskell.org/ghc/'>Glasgow Haskell Compiler</a>,
+  <a href='https://leanprover.github.io/'>Lean</a>,
   <a href='https://github.com/agda/agda'>Agda</a>,
+  <a href='https://www.linux.com/'>Linux</a>/<a href='https://www.ubuntu.com/'>Ubuntu</a>,
   <a href='https://llvm.org/'>LLVM</a>,
   <a href='https://gcc.gnu.org/'>GCC</a>,
   <a href='https://www.vim.org/'>Vim</a>/<a href='https://neovim.io/'>Neovim</a>,
-  <a href='https://www.linux.com/'>Linux</a>/<a href='https://www.ubuntu.com/'>Ubuntu</a>,
+  <a href='https://code.visualstudio.com/'>VS Code</a>,
   <a href='https://git-scm.com/'>Git</a>.
 </p>
