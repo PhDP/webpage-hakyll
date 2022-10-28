@@ -47,6 +47,15 @@ main =
       -- Parse templates
       match "templates/*" $ compile templateCompiler
 
+      -- Built the atom.xml file
+      create ["atom.xml"] $ do
+        route idRoute
+        compile $ do
+          let feedCtx = postCtx `mappend` bodyField "description"
+          posts <- fmap (take 10) . recentFirst =<<
+            loadAllSnapshots "posts/*" "content"
+          renderAtom myFeedConfiguration feedCtx posts
+
 -- Format for posts
 postCtx :: Context String
 postCtx = dateField "date" "%Y-%m-%d" <> defaultContext
@@ -85,4 +94,14 @@ parseMd = do
     pandocCompiler
     >>= loadAndApplyTemplate "templates/default.html" postCtx
     >>= relativizeUrls
+
+myFeedConfiguration :: FeedConfiguration
+myFeedConfiguration =
+  FeedConfiguration {
+    feedTitle       = "Philippe Desjardins-Proulx's blog",
+    feedDescription = "Probabilistic Programming, Typed Lambda-Calculi, Machine Learning, Evolutionary Genetics, Technology, etc etc...",
+    feedAuthorName  = "Philippe Desjardins-Proulx",
+    feedAuthorEmail = "philippe.desjardins.proulx@umontreal.ca",
+    feedRoot        = "https://phdp.github.io/"
+  }
 
