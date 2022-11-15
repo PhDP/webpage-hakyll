@@ -26,7 +26,7 @@ generous <a href='https://research.microsoft.com/en-us/projects/azure/'>Azure
 for Research Award from Microsoft Research</a>, and a hardware donation from <a
 href='https://www.nvidia.com/'>NVIDIA</a>.</p>
 
-<p>My work depends on many high-quality open-source projects:
+<p>My work relies on many high-quality open-source projects:
   <a href='https://www.rust-lang.org/'>Rust</a>,
   <a href='https://www.haskell.org/ghc/'>Glasgow Haskell Compiler</a>,
   <a href='https://leanprover.github.io/'>Lean</a>,
