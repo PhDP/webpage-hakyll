@@ -13,7 +13,7 @@ focus on probabilistic programming with typed λ-calculi &amp; learning
 mathematical formulas from data</b>.</p>
 
 <p>I <a
-href='https://journals.plos.org/plosbiology/article?id=10.1371/journal.pbio.1001563>'published
+href='https://journals.plos.org/plosbiology/article?id=10.1371/journal.pbio.1001563'>published
 a paper promoting open preprints in biology</a> and support open access in
 science.</p>
 
