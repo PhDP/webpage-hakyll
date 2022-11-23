@@ -169,6 +169,13 @@ p.authors {
 
 /* Blog-Stuff */
 
+p#blog-description {
+  font-weight: bold;
+  font-style: italic;
+  text-align: center;
+  font-size: 120%;
+}
+
 p#dt {
   margin-top: -1em;
   font-size: 80%;
