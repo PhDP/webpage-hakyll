@@ -16,7 +16,7 @@ title: Publications
   <p>
     <b>P. Desjardins-Proulx</b>, D. Gravel, T. Poisot. <a href='http://dx.doi.org/10.3389/fevo.2019.00402'><span class='bold myblue'>Artificial Intelligence for Ecological and Evolutionary Synthesis</span>, Frontiers in Ecology and Evolution 7: 402, 2019.
     DOI: 10.3389/fevo.2019.00402.</a>
-    <a href='files/desjardins-proulx_2019.pdf'>[PDF]</a>
+    <a href='files/desjardins-proulx_2019.pdf'><i class="fa-regular fa-file-pdf"></i></a>
     <a href='files/desjardins-proulx_2019.bib'>[BIB]</a>
     <a href='https://www.biorxiv.org/content/10.1101/161125v5'>[bioRxiv]</a>
   </p>
