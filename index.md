@@ -9,8 +9,7 @@ title: About
 <p>I'm a postdoctoral reseacher working on Artificial Intelligence applied to
 disease ecology at the <a href='https://poisotlab.io/'>Poisot lab</a> (<a
 href='https://www.umontreal.ca/en/'>University of Montreal</a>). <b>I currently
-focus on probabilistic programming with typed λ-calculi &amp; learning
-mathematical formulas from data</b>.</p>
+focus on probabilistic programming with typed λ-calculi</b>.</p>
 
 <p>I <a
 href='https://journals.plos.org/plosbiology/article?id=10.1371/journal.pbio.1001563'>published
