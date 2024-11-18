@@ -265,6 +265,10 @@ blockquote {
     width: auto;
   }
 
+  nav {
+    font-size: 300%;
+  }
+
   .normal-menu {
     display: none;
   }
