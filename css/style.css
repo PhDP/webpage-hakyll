@@ -2,6 +2,7 @@
 
 body {
   font-family: 'Source Sans Pro', 'Noto Sans JP', sans-serif;
+  font-size: 110%;
   color: #333333;
   width: 1024px;
   margin: 0 auto;
@@ -29,7 +30,7 @@ body {
 
 h1 {
   text-align: center;
-  font-size: 180%;
+  font-size: 2em;
 }
 
 h2 {
@@ -37,7 +38,7 @@ h2 {
 }
 
 h2, li#posts {
-  font-size: 120%;
+  font-size: 1.2em;
 }
 
 /* Links */
@@ -213,7 +214,7 @@ pre#plain {
   font-family: 'Source Code Pro', monospace;
   text-align: left;
   text-indent: 0;
-  border: 1px solid #DCDCCD;
+  border: 0.1em solid #DCDCCD;
   background-color: #1F3437;
   color: #DCDCCD;
   padding: 0.5em;
@@ -266,7 +267,7 @@ blockquote {
   }
 
   nav {
-    font-size: 300%;
+    font-size: 2.5em;
   }
 
   .normal-menu {
@@ -278,6 +279,7 @@ blockquote {
   }
 
   #mobile-menu {
+    font-size: 2.5em;
     display: block;
     text-align: center;
     font-weight: bold;
